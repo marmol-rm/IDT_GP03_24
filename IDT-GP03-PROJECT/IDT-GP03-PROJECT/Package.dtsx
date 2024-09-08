@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/8/2024 1:29:04 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HP-ECHO"
+  DTS:CreatorName="HP-ECHO\molin"
+  DTS:DTSID="{93CEE9A9-9645-438B-B292-8464DAFB5006}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="21514"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionGUID="{4BC00D75-35ED-45A6-B191-30C58A5B141F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables />
+</DTS:Executable>
