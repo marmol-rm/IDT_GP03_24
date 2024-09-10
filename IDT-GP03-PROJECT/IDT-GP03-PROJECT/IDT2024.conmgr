@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=HP-ECHO\IDT2024;Initial Catalog=DB_IDT03;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{28865E17-B99B-428A-BCC1-07CDF2A6D148}HP-ECHO\IDT2024.DB_IDT03;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=HP-ECHO\IDT2024;Initial Catalog=DB_IDT03;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{28865E17-B99B-428A-BCC1-07CDF2A6D148}HP-ECHO\IDT2024.DB_IDT03;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

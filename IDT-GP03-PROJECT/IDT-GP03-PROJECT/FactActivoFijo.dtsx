@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="9/9/2024 2:59:44 AM"
+  DTS:CreationDate="9/9/2024 8:42:42 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="HP-ECHO"
   DTS:CreatorName="HP-ECHO\molin"
-  DTS:DTSID="{938FD604-FA3E-4CA0-A3D7-8496898B150A}"
+  DTS:DTSID="{70ABB109-7D74-416D-A87A-45DE25E3BD27}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="21514"
-  DTS:ObjectName="DimProducto"
+  DTS:ObjectName="FactActivoFijo"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{003C18F7-CA05-426D-9CF7-4E17C9BEAC2B}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{DC09F9D0-CA7D-4D51-94BE-B61F5BCB457A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}"
+      DTS:DTSID="{0B83B7F4-6051-4574-903B-0E9F3AA16A9C}"
       DTS:ObjectName="HP-ECHO\IDT2024.ACTIVO_FIJO_DW">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -31,7 +31,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[HP-ECHO\IDT2024.DB_IDT03]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{27C27C5B-EBC0-47CD-A493-7207195BA163}"
+      DTS:DTSID="{FD693821-4839-4282-8639-33423D4C026E}"
       DTS:ObjectName="HP-ECHO\IDT2024.DB_IDT03">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -47,10 +47,11 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{80D96D2F-D771-4266-BC7D-FE267F24F042}"
+      DTS:DTSID="{367DB4F7-640F-4E58-927D-31CB644F0E55}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task">
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
@@ -268,7 +269,7 @@
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="5.5,5.5" />
+          TopLeft="71,60" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -278,27 +279,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="421,68" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="78,70" />
+          TopLeft="120,72" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="391,83" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="235,90">
+          TopLeft="277,93">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="186,0"
+              EndConnector="114,11"
               Start="0,0"
-              End="178.5,0">
+              End="106.5,11">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="178.5,0" />
+                    End="53,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,0"
+                    Point2="57,0"
+                    Point3="57,4" />
+                  <mssgle:LineSegment
+                    End="57,7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57,7"
+                    Point2="57,11"
+                    Point3="61,11" />
+                  <mssgle:LineSegment
+                    End="106.5,11" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
