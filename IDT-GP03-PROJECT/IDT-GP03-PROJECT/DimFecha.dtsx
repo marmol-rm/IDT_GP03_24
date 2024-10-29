@@ -11,11 +11,23 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="DimFecha"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{1EE58BFB-0E6B-409E-9116-1ABF85964600}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{1A45FB6D-1CA3-4A94-B5AC-107E8EFE641B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{64BC410A-6F2C-4FFE-8B8C-2BD36C2D3EC2}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\molin\source\repos\marmol-rm\IDT_GP03_24\Archivos\DateDimTemplate.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[HP-ECHO\IDT2024]"
       DTS:CreationName="OLEDB"
@@ -45,31 +57,13 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
+              refId="Package\Data Flow Task\ACTIVO_FIJO_DW"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="ACTIVO_FIJO_DW"
+              version="5">
               <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -79,79 +73,138 @@
                   description="Forces the use of the DefaultCodePage property value when describing character data."
                   name="AlwaysUseDefaultCodePage">false</property>
                 <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[dbo].[DIM_FECHA]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
                   dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
                 <property
                   dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
                 <property
                   dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
                 <property
                   dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{28865E17-B99B-428A-BCC1-07CDF2A6D148}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[IDT2024]"
+                  refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Connections[OleDbConnection]"
+                  connectionManagerID="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[IDT2024.ACTIVO_FIJO_DW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
+                  refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input]"
                   hasSideEffects="true"
-                  name="OLE DB Destination Input">
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].Columns[date key]"
+                      cachedDataType="r8"
+                      cachedName="date key"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[FECHA_KEY]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[date key]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].Columns[full date]"
+                      cachedDataType="date"
+                      cachedName="full date"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[FECHA_COMPLETA]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[full date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].Columns[day num in month]"
+                      cachedDataType="r8"
+                      cachedName="day num in month"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[DIA_DEL_MES]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day num in month]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].Columns[month]"
+                      cachedDataType="r8"
+                      cachedName="month"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[MES_CALENDARIO]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].Columns[year]"
+                      cachedDataType="r8"
+                      cachedName="year"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[ANIO_CALENDARIO]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[year]" />
+                  </inputColumns>
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[FECHA_KEY]"
+                      dataType="i8"
+                      name="FECHA_KEY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[FECHA_COMPLETA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_COMPLETA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[DIA_DEL_MES]"
+                      dataType="ui1"
+                      name="DIA_DEL_MES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[MES_CALENDARIO]"
+                      dataType="ui1"
+                      name="MES_CALENDARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input].ExternalColumns[ANIO_CALENDARIO]"
+                      dataType="i2"
+                      name="ANIO_CALENDARIO" />
+                  </externalMetadataColumns>
                 </input>
               </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
+              refId="Package\Data Flow Task\Template"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Template"
               usesDispositions="true"
-              version="7">
+              version="1">
               <properties>
                 <property
                   dataType="System.Int32"
@@ -160,7 +213,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[departamento]</property>
+                  name="OpenRowset">'Date dimension$'</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -176,115 +229,507 @@
                   name="SqlCommandVariable"></property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
                   typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
+                  description="The mapping from parameters in the SQL command to variables."
                   name="ParameterMapping"></property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{28865E17-B99B-428A-BCC1-07CDF2A6D148}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[IDT2024]"
+                  refId="Package\Data Flow Task\Template.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                  connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
+                  refId="Package\Data Flow Task\Template.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[depto_id]"
-                      dataType="i8"
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[date key]"
+                      dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[depto_id]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[depto_id]"
-                      name="depto_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[date key]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[date key]"
+                      name="date key"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[pais_id]"
-                      dataType="i8"
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[full date]"
+                      dataType="date"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pais_id]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[pais_id]"
-                      name="pais_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[full date]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[full date]"
+                      name="full date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[dep_name]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day of week]"
+                      dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[dep_name]"
-                      length="100"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[dep_name]"
-                      name="dep_name"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day of week]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day of week]"
+                      name="day of week"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day num in month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day num in month]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day num in month]"
+                      name="day num in month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day num overall]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day num overall]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day num overall]"
+                      name="day num overall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day name]"
+                      name="day name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day abbrev]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day abbrev]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[day abbrev]"
+                      name="day abbrev"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[weekday flag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[weekday flag]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[weekday flag]"
+                      name="weekday flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week num in year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week num in year]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week num in year]"
+                      name="week num in year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week num overall]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week num overall]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week num overall]"
+                      name="week num overall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week begin date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week begin date]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week begin date]"
+                      name="week begin date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week begin date key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week begin date key]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[week begin date key]"
+                      name="week begin date key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month]"
+                      name="month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month num overall]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month num overall]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month num overall]"
+                      name="month num overall"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month name]"
+                      name="month name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month abbrev]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month abbrev]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[month abbrev]"
+                      name="month abbrev"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[quarter]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[quarter]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[quarter]"
+                      name="quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[year]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[yearmo]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[yearmo]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[yearmo]"
+                      name="yearmo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[fiscal month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[fiscal month]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[fiscal month]"
+                      name="fiscal month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[fiscal quarter]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[fiscal quarter]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[fiscal quarter]"
+                      name="fiscal quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[fiscal year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[fiscal year]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[fiscal year]"
+                      name="fiscal year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[last day in month flag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[last day in month flag]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[last day in month flag]"
+                      name="last day in month flag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[same day year ago]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[same day year ago]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Output].Columns[same day year ago]"
+                      name="same day year ago"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[depto_id]"
-                      dataType="i8"
-                      name="depto_id" />
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[date key]"
+                      dataType="r8"
+                      name="date key" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[pais_id]"
-                      dataType="i8"
-                      name="pais_id" />
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[full date]"
+                      dataType="date"
+                      name="full date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[dep_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      name="dep_name" />
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day of week]"
+                      dataType="r8"
+                      name="day of week" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day num in month]"
+                      dataType="r8"
+                      name="day num in month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day num overall]"
+                      dataType="r8"
+                      name="day num overall" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day name]"
+                      dataType="wstr"
+                      length="255"
+                      name="day name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[day abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      name="day abbrev" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[weekday flag]"
+                      dataType="wstr"
+                      length="255"
+                      name="weekday flag" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week num in year]"
+                      dataType="r8"
+                      name="week num in year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week num overall]"
+                      dataType="r8"
+                      name="week num overall" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week begin date]"
+                      dataType="date"
+                      name="week begin date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[week begin date key]"
+                      dataType="r8"
+                      name="week begin date key" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month]"
+                      dataType="r8"
+                      name="month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month num overall]"
+                      dataType="r8"
+                      name="month num overall" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month name]"
+                      dataType="wstr"
+                      length="255"
+                      name="month name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[month abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      name="month abbrev" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[quarter]"
+                      dataType="r8"
+                      name="quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[year]"
+                      dataType="r8"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[yearmo]"
+                      dataType="r8"
+                      name="yearmo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[fiscal month]"
+                      dataType="r8"
+                      name="fiscal month" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[fiscal quarter]"
+                      dataType="r8"
+                      name="fiscal quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[fiscal year]"
+                      dataType="r8"
+                      name="fiscal year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[last day in month flag]"
+                      dataType="wstr"
+                      length="255"
+                      name="last day in month flag" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[same day year ago]"
+                      dataType="date"
+                      name="same day year ago" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[F25]"
+                      dataType="wstr"
+                      length="255"
+                      name="F25" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Output].ExternalColumns[table insert statement]"
+                      dataType="wstr"
+                      length="255"
+                      name="table insert statement" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output]"
                   isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[depto_id]"
-                      dataType="i8"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[depto_id]"
-                      name="depto_id" />
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[date key]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[date key]"
+                      name="date key" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pais_id]"
-                      dataType="i8"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[pais_id]"
-                      name="pais_id" />
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[full date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[full date]"
+                      name="full date" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[dep_name]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[dep_name]"
-                      name="dep_name" />
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day of week]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day of week]"
+                      name="day of week" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day num in month]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day num in month]"
+                      name="day num in month" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day num overall]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day num overall]"
+                      name="day num overall" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day name]"
+                      name="day name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[day abbrev]"
+                      name="day abbrev" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[weekday flag]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[weekday flag]"
+                      name="weekday flag" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week num in year]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week num in year]"
+                      name="week num in year" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week num overall]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week num overall]"
+                      name="week num overall" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week begin date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week begin date]"
+                      name="week begin date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week begin date key]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[week begin date key]"
+                      name="week begin date key" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month]"
+                      name="month" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month num overall]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month num overall]"
+                      name="month num overall" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month name]"
+                      name="month name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month abbrev]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[month abbrev]"
+                      name="month abbrev" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[quarter]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[quarter]"
+                      name="quarter" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[year]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[yearmo]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[yearmo]"
+                      name="yearmo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[fiscal month]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[fiscal month]"
+                      name="fiscal month" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[fiscal quarter]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[fiscal quarter]"
+                      name="fiscal quarter" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[fiscal year]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[fiscal year]"
+                      name="fiscal year" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[last day in month flag]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[last day in month flag]"
+                      name="last day in month flag" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[same day year ago]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[same day year ago]"
+                      name="same day year ago" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Template.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -295,10 +740,10 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[SQL Server Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Template.Outputs[Excel Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -329,27 +774,27 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="122.5,65.5" />
+          Size="174,42"
+          Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
+          TopLeft="245,251" />
         <NodeLayout
-          Size="177,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="415.5,59.5" />
+          Size="125,42"
+          Id="Package\Data Flow Task\Template"
+          TopLeft="265,106" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="279.5,83.5">
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="329.75,148">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="136,0"
+              EndConnector="0,103"
               Start="0,0"
-              End="128.5,0">
+              End="0,95.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="128.5,0" />
+                    End="0,95.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -362,20 +807,15 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
+    design-time-name="Package\Data Flow Task\Template">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

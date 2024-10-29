@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\FactActivoFijo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|solutionrelative:IDT-GP03-PROJECT\\FactActivoFijo.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\Package.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|solutionrelative:IDT-GP03-PROJECT\\Package.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimProducto.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|solutionrelative:IDT-GP03-PROJECT\\DimProducto.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimUbicacion.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|solutionrelative:IDT-GP03-PROJECT\\DimUbicacion.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimDetalleProd.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design",
-      "RelativeMoniker": "D:0:0:{C113E0CA-CAF9-496B-A3D6-BB983A045686}|IDT-GP03-PROJECT\\IDT-GP03-PROJECT.dtproj|solutionrelative:IDT-GP03-PROJECT\\DimDetalleProd.dtsx||{CC84AFBD-DA02-46F4-8623-9F07E5569EDB}|Design"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,71 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FactActivoFijo.dtsx [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\FactActivoFijo.dtsx",
-              "RelativeDocumentMoniker": "IDT-GP03-PROJECT\\FactActivoFijo.dtsx",
-              "ToolTip": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\FactActivoFijo.dtsx [Dise\u00F1o]",
-              "RelativeToolTip": "IDT-GP03-PROJECT\\FactActivoFijo.dtsx [Dise\u00F1o]",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-09-10T02:42:42.183Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Package.dtsx [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\Package.dtsx",
-              "RelativeDocumentMoniker": "IDT-GP03-PROJECT\\Package.dtsx",
-              "ToolTip": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\Package.dtsx [Dise\u00F1o]*",
-              "RelativeToolTip": "IDT-GP03-PROJECT\\Package.dtsx [Dise\u00F1o]*",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-09-10T02:42:17.465Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DimDetalleProd.dtsx [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimDetalleProd.dtsx",
-              "RelativeDocumentMoniker": "IDT-GP03-PROJECT\\DimDetalleProd.dtsx",
-              "ToolTip": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimDetalleProd.dtsx [Dise\u00F1o]",
-              "RelativeToolTip": "IDT-GP03-PROJECT\\DimDetalleProd.dtsx [Dise\u00F1o]",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-09-10T02:34:27.761Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DimUbicacion.dtsx [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimUbicacion.dtsx",
-              "RelativeDocumentMoniker": "IDT-GP03-PROJECT\\DimUbicacion.dtsx",
-              "ToolTip": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimUbicacion.dtsx [Dise\u00F1o]",
-              "RelativeToolTip": "IDT-GP03-PROJECT\\DimUbicacion.dtsx [Dise\u00F1o]",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-09-10T02:31:30.814Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DimProducto.dtsx [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimPRoducto.dtsx",
-              "RelativeDocumentMoniker": "IDT-GP03-PROJECT\\DimPRoducto.dtsx",
-              "ToolTip": "C:\\Users\\molin\\source\\repos\\marmol-rm\\IDT_GP03_24\\IDT-GP03-PROJECT\\IDT-GP03-PROJECT\\DimPRoducto.dtsx [Dise\u00F1o]",
-              "RelativeToolTip": "IDT-GP03-PROJECT\\DimPRoducto.dtsx [Dise\u00F1o]",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVDhPY2QAgqUbD/8H0bjAu49fGG7fvZ8\u002BqTFrFlQIAv7/h\u002BgDGfDv71\u002BcePKi7f9NPZP/59VPSwNrQAJMUJogaK0pZDh\u002B6uxMdEOINqC6pR9MgwwBM6CABUqDQcWCa1AWA0NHghac//k9G0NcZAiYvWj5GjANAxgu\u002BC2rAcYwAGJz6NkxZEe7QUVQAYYBrI9vgDEMwPhffkEFsAFCsfDp\u002B9//D98jYgOqDQwIBiLI5vc/GBjefP/PwMLGARVFABQDQIEGwyCArPnNdwaGf1iSG85ARNb8\u002BhsDwweQAb\u002BBAmgAZyAia371lYHh7MnrDI9/yzA4hhQwlM29/J/BeCbYPSjpABT3MJvf//jP8BZoK4j95TfE7SD5hy\u002B\u002BMFy5846hCyyCZMDUpbugLFxABq75zPU3UDGoAaDchp7C0AHI6TDNyAaAszNRAOpnFHA2nREAjMTvHMVXB8cAAAAASUVORK5CYII=",
-              "WhenOpened": "2024-09-10T02:26:11.331Z",
-              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }
