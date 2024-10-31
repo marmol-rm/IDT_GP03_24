@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="FactActivoFijo"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{DC09F9D0-CA7D-4D51-94BE-B61F5BCB457A}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{C7117C5D-83FD-41F5-A537-22D13F71E125}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,16 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=HP-ECHO\IDT2024;Initial Catalog=ACTIVO_FIJO_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW 1]"
+      DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{026BC5A2-6915-49A9-B857-6C831DFF8E66}"
+      DTS:ObjectName="HP-ECHO\IDT2024.ACTIVO_FIJO_DW 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=HP-ECHO\IDT2024;Initial Catalog=ACTIVO_FIJO_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -58,183 +68,244 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
+              refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
+              name="Origen de ADO NET (DB_ODOO)"
               usesDispositions="true"
               version="4">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
+                  description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
+                  expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">30</property>
                 <property
                   dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
+                  description="Indica si se debe permitir que columnas externas que no sean de cadenas se conviertan implícitamente en cadenas en las columnas de salida."
+                  name="AllowImplicitStringConversion">true</property>
                 <property
                   dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  description="Nombre de la tabla de la base de datos de origen."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">[dbo].[DIM_FECHA]</property>
                 <property
                   dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  description="Especificar el modo de recuperar información de columnas externas"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW 1]"
+                  description="Administrador de conexiones administrado"
+                  name="IDbConnection" />
               </connections>
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <externalMetadataColumns
-                    isUsed="True" />
-                </input>
-              </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET]"
+                  name="Salida de origen de ADO NET">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[FECHA_KEY]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[FECHA_KEY]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[FECHA_KEY]"
+                      name="FECHA_KEY"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[FECHA_COMPLETA]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[FECHA_COMPLETA]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[FECHA_COMPLETA]"
+                      name="FECHA_COMPLETA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[CUARTO]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[CUARTO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[CUARTO]"
+                      name="CUARTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[ANIO_FISCAL]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[ANIO_FISCAL]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[ANIO_FISCAL]"
+                      name="ANIO_FISCAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[ANIO_CALENDARIO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[ANIO_CALENDARIO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[ANIO_CALENDARIO]"
+                      name="ANIO_CALENDARIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[MES_CALENDARIO]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[MES_CALENDARIO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[MES_CALENDARIO]"
+                      name="MES_CALENDARIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[DIA_DEL_MES]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[DIA_DEL_MES]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[DIA_DEL_MES]"
+                      name="DIA_DEL_MES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[NOMBRE_DIA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[NOMBRE_DIA]"
+                      length="15"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[NOMBRE_DIA]"
+                      name="NOMBRE_DIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[DIA_ABREV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[DIA_ABREV]"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[DIA_ABREV]"
+                      name="DIA_ABREV"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.DB_IDT03]"
-                  connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.DB_IDT03]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
                   <externalMetadataColumns
-                    isUsed="True" />
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[FECHA_KEY]"
+                      dataType="i4"
+                      name="FECHA_KEY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[FECHA_COMPLETA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_COMPLETA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[CUARTO]"
+                      dataType="i2"
+                      name="CUARTO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[ANIO_FISCAL]"
+                      dataType="i4"
+                      name="ANIO_FISCAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[ANIO_CALENDARIO]"
+                      dataType="i4"
+                      name="ANIO_CALENDARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[MES_CALENDARIO]"
+                      dataType="ui1"
+                      name="MES_CALENDARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[DIA_DEL_MES]"
+                      dataType="ui1"
+                      name="DIA_DEL_MES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[NOMBRE_DIA]"
+                      dataType="wstr"
+                      length="15"
+                      name="NOMBRE_DIA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[DIA_ABREV]"
+                      dataType="wstr"
+                      length="3"
+                      name="DIA_ABREV" />
+                  </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET]"
                   isErrorOut="true"
-                  name="OLE DB Source Error Output">
+                  name="Salida de error de origen de ADO NET">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[FECHA_KEY]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[FECHA_KEY]"
+                      name="FECHA_KEY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[FECHA_COMPLETA]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[FECHA_COMPLETA]"
+                      name="FECHA_COMPLETA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[CUARTO]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[CUARTO]"
+                      name="CUARTO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ANIO_FISCAL]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ANIO_FISCAL]"
+                      name="ANIO_FISCAL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ANIO_CALENDARIO]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ANIO_CALENDARIO]"
+                      name="ANIO_CALENDARIO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[MES_CALENDARIO]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[MES_CALENDARIO]"
+                      name="MES_CALENDARIO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[DIA_DEL_MES]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[DIA_DEL_MES]"
+                      name="DIA_DEL_MES" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[NOMBRE_DIA]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[NOMBRE_DIA]"
+                      name="NOMBRE_DIA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[DIA_ABREV]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[DIA_ABREV]"
+                      name="DIA_ABREV" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -243,13 +314,6 @@
               </outputs>
             </component>
           </components>
-          <paths>
-            <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -277,51 +341,21 @@
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="120,72" />
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="391,83" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="277,93">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="114,11"
-              Start="0,0"
-              End="106.5,11">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="53,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="53,0"
-                    Point2="57,0"
-                    Point3="57,4" />
-                  <mssgle:LineSegment
-                    End="57,7" />
-                  <mssgle:CubicBezierSegment
-                    Point1="57,7"
-                    Point2="57,11"
-                    Point3="61,11" />
-                  <mssgle:LineSegment
-                    End="106.5,11" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="244,42"
+          Id="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
+          TopLeft="83,41" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
