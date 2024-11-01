@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="DimVendedor"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{3729A7BD-C3D2-4D38-A807-DAB108F19420}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{FD188BE5-77AB-4E26-A498-DB1A281F6FE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -61,7 +61,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABJBTVC3fgeOi+pH+9okhRXCqC0XbB/urkjb62apziZTgAAAAAOgAAAAAIAACAAAAB5FOGju/N9DrymADYf3U+N8BmIjbQYcM0TAobJjZ880BAAAACNAJKjxT+GejE7uVW0xgCAQAAAALqtWclBYtG649+4rvLZ1oqkbnX+zVb8Keh43Ls6EcWzMmmKce464QYD3rbHPMJ5D8/1Mh+uYN9arKvD0agK3v8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC5ydtr5Nu3pCAbW2+86mbezHji04So6i1POzGaz7tLcwAAAAAOgAAAAAIAACAAAADynVBss5yekm7NO6GyHNA/oM0YwaIkH8QfaRVZ+Q1xRxAAAAAPhs4XeQOmf4DQVfE91d5BQAAAAAlTLwLs0Zc4Cv7kTwWJYCpaO4mbb82xiM/8nsAkJFQr1/q86E03MWnK+/OWr883sni1x4AMpWVgD4TLIw2T5uU</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -131,51 +131,55 @@
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_ID]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[id]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[complete_name]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="complete_name"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_VENDEDOR]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[complete_name]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[supplier_rank]"
                       cachedDataType="i4"
                       cachedName="supplier_rank"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[RANGO]"
                       lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[supplier_rank]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[website]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="website"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_ID]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[complete name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="complete name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_VENDEDOR]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[website formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="website formatted"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[SITIO_WEB]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[website]" />
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[phone_sanitized]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="phone_sanitized"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TELEFONO]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[phone_sanitized]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[email_normalized]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="email_normalized"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[email formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="email formatted"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[EMAIL]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[email_normalized]" />
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[email formatted]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[location]"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[phone formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="phone formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TELEFONO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[phone formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[location formatted]"
                       cachedDataType="nText"
-                      cachedName="location"
+                      cachedName="location formatted"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[UBICACION]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[location]" />
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -237,6 +241,433 @@
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[complete_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="complete_name"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[complete_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[website]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="website"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[website]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="email"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[phone]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="phone"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[phone]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[location]"
+                      cachedDataType="nText"
+                      cachedName="location"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[location]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]"
+                      name="id formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]"
+                      name="complete name formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[complete_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]"
+                      name="website formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[website]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[email formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[email formatted]"
+                      name="email formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[email]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[phone formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[phone formatted]"
+                      name="phone formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[phone]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]"
+                      name="location formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[location]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC ACTUALIZAR_VENDEDOR ?,?,?,?,?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[IDT2024.ACTIVO_FIJO_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VENDEDOR_ID]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[supplier_rank]"
+                      cachedDataType="i4"
+                      cachedName="supplier_rank"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@RANGO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[supplier_rank]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[complete name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="complete name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@NOMBRE]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[website formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="website formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@SITIO_WEB]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[email formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="email formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@EMAIL]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[email formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[phone formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="phone formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TELEFONO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[phone formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[location formatted]"
+                      cachedDataType="nText"
+                      cachedName="location formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@UBICACION]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VENDEDOR_ID]"
+                      dataType="i8"
+                      name="@VENDEDOR_ID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@NOMBRE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@NOMBRE">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@RANGO]"
+                      dataType="i4"
+                      name="@RANGO">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@SITIO_WEB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@SITIO_WEB">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@EMAIL]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@EMAIL">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TELEFONO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="@TELEFONO">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@UBICACION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@UBICACION">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1638,11 +2069,167 @@ inner join res_country country on partner.country_id = country.id;</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Data Flow Task\Verifica existencias"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Verifica existencias"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_VENDEDOR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_VENDEDOR]) [refTable]
+where [refTable].[VENDEDOR_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VENDEDOR_KEY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VENDEDOR_ID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOMBRE_VENDEDOR" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="RANGO" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SITIO_WEB" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EMAIL" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TELEFONO" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UBICACION" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Verifica existencias.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">VENDEDOR_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
               endId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
               name="Salida de origen de ADO NET"
               startId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET]" />
           </paths>
@@ -1673,29 +2260,135 @@ inner join res_country country on partner.country_id = country.id;</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="174,42"
           Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
-          TopLeft="260,205" />
+          TopLeft="130,341" />
         <NodeLayout
           Size="244,42"
           Id="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
           TopLeft="221,78" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Data Flow Task\OLE DB Command"
+          TopLeft="392,344" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Data Flow Task\Verifica existencias"
+          TopLeft="254,242" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="265,160" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
-          TopLeft="345,120">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="343,202">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,85"
+              EndConnector="0,40"
               Start="0,0"
-              End="0,77.5">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.5" />
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="313,284">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-96,57"
+              Start="0,0"
+              End="-96,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.1134020618557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.1134020618557"
+                    Point2="0,23.1134020618557"
+                    Point3="-4,23.1134020618557" />
+                  <mssgle:LineSegment
+                    End="-92,23.1134020618557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-92,23.1134020618557"
+                    Point2="-96,23.1134020618557"
+                    Point3="-96,27.1134020618557" />
+                  <mssgle:LineSegment
+                    End="-96,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.80638671875,28.1134020618557,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="368,284">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.5,60"
+              Start="0,0"
+              End="110.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3298969072165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3298969072165"
+                    Point2="0,24.3298969072165"
+                    Point3="4,24.3298969072165" />
+                  <mssgle:LineSegment
+                    End="106.5,24.3298969072165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="106.5,24.3298969072165"
+                    Point2="110.5,24.3298969072165"
+                    Point3="110.5,28.3298969072165" />
+                  <mssgle:LineSegment
+                    End="110.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.05861328125,29.3298969072165,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+          TopLeft="344.25,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1718,6 +2411,29 @@ inner join res_country country on partner.country_id = country.id;</property>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)">
     <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Verifica existencias">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_VENDEDOR]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

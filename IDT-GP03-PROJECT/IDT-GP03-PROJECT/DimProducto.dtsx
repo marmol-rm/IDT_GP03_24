@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="HP-ECHO"
   DTS:CreatorName="HP-ECHO\molin"
-  DTS:DTSID="{E8D42DB3-DD64-49AA-94F2-072432E5F3AF}"
+  DTS:DTSID="{DB6965AC-12F7-41CC-999F-E44EAEADF2FD}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="21514"
   DTS:ObjectName="DimProducto"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{1B99E7FB-96AC-418A-BBC6-15129098465E}">
+  DTS:VersionBuild="64"
+  DTS:VersionGUID="{B002CE28-E665-4A2A-84AE-E2F6B4FF5A13}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -49,7 +49,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA9fE425nUomVSKTtBMyTYALNL20wxd7Z9mYsQjQzPkVQAAAAAOgAAAAAIAACAAAACGBH7m+em0IfossL6EqUEAPk0LdAMzpS++N7hAlury1BAAAAC/3dNDfEsarFc+L0qMFSmkQAAAAE8dIJpd8ovyiqQf8c7tsbDEEAdqwYj7kOACRg9SM8FQEVxW+P1lZE6vjuDYtI56wcZcCVRc/QbW4WMCj5m3gp8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACH9HMTPU4N807R0XXh5X1CeNVuNpKppwu3AlyVCCzqpQAAAAAOgAAAAAIAACAAAAAhD+BHC43/3GRPBwe2msgdFFOVnTPbTzp+mJu9P3fv9BAAAADjWNREMmhkvqPikxWRyV6eQAAAAItMaFGQOFotxm7knw5do/ZwVI5FNw6dlH2btHYoatfz/jx+nFsNSkUnXSKIChTnpIJvFKoXLFOSKLjtkdIOdEo</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -119,32 +119,23 @@
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id]"
-                      cachedDataType="i4"
-                      cachedName="id"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_ID]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[id]" />
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[valor_depreciado]"
+                      cachedDataType="r8"
+                      cachedName="valor_depreciado"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DEPRECIADO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_depreciado]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[category_name formatted]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="category_name formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO_PRODUCTO]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[category_name formatted]" />
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[valor_restante]"
+                      cachedDataType="r8"
+                      cachedName="valor_restante"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_ACTUAL]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_restante]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[state formatted]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="state formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ESTADO_PRODUCTO]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[method formatted]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="method formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[METODO_DEPRECIACION]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[method formatted]" />
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[valor_anterior]"
+                      cachedDataType="r8"
+                      cachedName="valor_anterior"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_ANTERIOR]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_anterior]" />
                     <inputColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[method_progress_factor]"
                       cachedDataType="r8"
@@ -152,12 +143,51 @@
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TASA_DEPRECIACION]"
                       lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[method_progress_factor]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[currency formatted]"
-                      cachedDataType="wstr"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[method formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="method formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[METODO_DEPRECIACION]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[method formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[currency name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="5"
-                      cachedName="currency formatted"
+                      cachedName="currency name formatted"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO_DE_MONEDA]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency formatted]" />
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[state formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ESTADO_PRODUCTO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id]"
+                      cachedDataType="i4"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_ID]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[product name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="product name"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_PRODUCTO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[product name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[category_name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="category_name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO_PRODUCTO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[category_name formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -169,6 +199,11 @@
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_ID]"
                       dataType="i8"
                       name="PRODUCTO_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_PRODUCTO]"
+                      dataType="wstr"
+                      length="100"
+                      name="NOMBRE_PRODUCTO" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[TIPO_PRODUCTO]"
                       dataType="wstr"
@@ -195,6 +230,32 @@
                       name="TASA_DEPRECIACION"
                       precision="25"
                       scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_ANTERIOR]"
+                      dataType="numeric"
+                      name="VALOR_ANTERIOR"
+                      precision="25"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_ACTUAL]"
+                      dataType="numeric"
+                      name="VALOR_ACTUAL"
+                      precision="25"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DEPRECIADO]"
+                      dataType="numeric"
+                      name="VALOR_DEPRECIADO"
+                      precision="25"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_CREACION]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_CREACION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_ACTUALIZACION]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_ACTUALIZACION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -340,11 +401,17 @@
                       cachedName="category_name"
                       lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[category_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[currency]"
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[currency_name]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="currency"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency]" />
+                      cachedName="currency_name"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="name"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[name]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -378,7 +445,8 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[method formatted]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
@@ -399,7 +467,8 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state formatted]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
@@ -420,7 +489,8 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[category_name formatted]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="50"
@@ -440,20 +510,43 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency formatted]"
-                      dataType="wstr"
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency name formatted]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       length="5"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency formatted]"
-                      name="currency formatted"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency name formatted]"
+                      name="currency name formatted"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[product name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[product name]"
+                      name="product name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[name]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -488,6 +581,284 @@
               </outputs>
             </component>
             <component
+              refId="Package\Data Flow Task\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC ACTUALIZAR_PRODUCTO ?,?,?,?,?,?,?,?,?,?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[IDT2024.ACTIVO_FIJO_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[category_name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="category_name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TIPO_PRODUCTO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[category_name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@PRODUCTO_ID]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[state formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="state formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@ESTADO_PRODUCTO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[currency name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="currency name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TIPO_DE_MONEDA]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[currency name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[method formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="method formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@METODO_DEPRECIACION]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[method formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[method_progress_factor]"
+                      cachedDataType="r8"
+                      cachedName="method_progress_factor"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TASA_DEPRECIACION]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[method_progress_factor]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[valor_depreciado]"
+                      cachedDataType="r8"
+                      cachedName="valor_depreciado"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VALOR_DEPRECIADO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_depreciado]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[valor_anterior]"
+                      cachedDataType="r8"
+                      cachedName="valor_anterior"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VALOR_ANTERIOR]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_anterior]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[valor_producto]"
+                      cachedDataType="numeric"
+                      cachedName="valor_producto"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VALOR_ACTUAL]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_producto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[product name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="product name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@NOMBRE_PRODUCTO]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[product name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@NOMBRE_PRODUCTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@NOMBRE_PRODUCTO">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TIPO_PRODUCTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@TIPO_PRODUCTO">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@ESTADO_PRODUCTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@ESTADO_PRODUCTO">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TIPO_DE_MONEDA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="@TIPO_DE_MONEDA">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@METODO_DEPRECIACION]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@METODO_DEPRECIACION">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@TASA_DEPRECIACION]"
+                      dataType="numeric"
+                      name="@TASA_DEPRECIACION"
+                      precision="13"
+                      scale="5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VALOR_DEPRECIADO]"
+                      dataType="numeric"
+                      name="@VALOR_DEPRECIADO"
+                      precision="13"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VALOR_ANTERIOR]"
+                      dataType="numeric"
+                      name="@VALOR_ANTERIOR"
+                      precision="13"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VALOR_ACTUAL]"
+                      dataType="numeric"
+                      name="@VALOR_ACTUAL"
+                      precision="13"
+                      scale="2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@PRODUCTO_ID]"
+                      dataType="i8"
+                      name="@PRODUCTO_ID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Data Flow Task\Origen de ADO NET (ODOO)"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
@@ -501,9 +872,16 @@
                   description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select ast.*, cat."name" as category_name, rc."name" as currency from account_asset_asset ast inner join 
-account_asset_category cat ON ast.category_id = cat.id inner join 
-res_currency rc ON ast.currency_id = rc.id;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select asset.*, 
+cat."name" as category_name, 
+cur."name" as currency_name, 
+asset.value as valor_producto,
+depline.remaining_value as valor_restante, 
+depline.depreciated_value as valor_depreciado, 
+depline.remaining_value + depline.depreciated_value as valor_anterior from account_asset_asset asset inner join 
+account_asset_category cat ON asset.category_id = cat.id inner join 
+account_asset_depreciation_line depline on depline.asset_id = asset.id inner join res_currency cur ON asset.currency_id = cur.id 
+where date_part('year', depline.depreciation_date) = date_part('year', CURRENT_DATE) and date_part('month', depline.depreciation_date) = date_part('month', CURRENT_DATE) ;</property>
                 <property
                   dataType="System.Int32"
                   description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
@@ -787,14 +1165,52 @@ res_currency rc ON ast.currency_id = rc.id;</property>
                       name="category_name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency_name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[currency]"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[currency_name]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency]"
-                      name="currency"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[currency_name]"
+                      name="currency_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_producto]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_producto]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_producto]"
+                      name="valor_producto"
+                      precision="28"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_restante]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_restante]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_restante]"
+                      name="valor_restante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_depreciado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_depreciado]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_depreciado]"
+                      name="valor_depreciado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_anterior]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_anterior]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].Columns[valor_anterior]"
+                      name="valor_anterior"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -916,10 +1332,28 @@ res_currency rc ON ast.currency_id = rc.id;</property>
                       length="255"
                       name="category_name" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[currency]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[currency_name]"
                       dataType="wstr"
                       length="255"
-                      name="currency" />
+                      name="currency_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_producto]"
+                      dataType="numeric"
+                      name="valor_producto"
+                      precision="28"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_restante]"
+                      dataType="r8"
+                      name="valor_restante" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_depreciado]"
+                      dataType="r8"
+                      name="valor_depreciado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[valor_anterior]"
+                      dataType="r8"
+                      name="valor_anterior" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1070,11 +1504,33 @@ res_currency rc ON ast.currency_id = rc.id;</property>
                       lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[category_name]"
                       name="category_name" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[currency]"
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[currency_name]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[currency]"
-                      name="currency" />
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[currency_name]"
+                      name="currency_name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_producto]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_producto]"
+                      name="valor_producto"
+                      precision="28"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_restante]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_restante]"
+                      name="valor_restante" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_depreciado]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_depreciado]"
+                      name="valor_depreciado" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_anterior]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[valor_anterior]"
+                      name="valor_anterior" />
                     <outputColumn
                       refId="Package\Data Flow Task\Origen de ADO NET (ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
@@ -1092,6 +1548,147 @@ res_currency rc ON ast.currency_id = rc.id;</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\Data Flow Task\Verifica existencias"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Verifica existencias"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_PRODUCTO]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_PRODUCTO]) [refTable]
+where [refTable].[PRODUCTO_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PRODUCTO_KEY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PRODUCTO_ID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOMBRE_PRODUCTO" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TIPO_PRODUCTO" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ESTADO_PRODUCTO" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TIPO_DE_MONEDA" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="METODO_DEPRECIACION" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TASA_DEPRECIACION" dataType="DT_NUMERIC" length="0" precision="25" scale="5" codePage="0"/&gt;&lt;referenceColumn name="VALOR_ANTERIOR" dataType="DT_NUMERIC" length="0" precision="25" scale="2" codePage="0"/&gt;&lt;referenceColumn name="VALOR_ACTUAL" dataType="DT_NUMERIC" length="0" precision="25" scale="2" codePage="0"/&gt;&lt;referenceColumn name="VALOR_DEPRECIADO" dataType="DT_NUMERIC" length="0" precision="25" scale="2" codePage="0"/&gt;&lt;referenceColumn name="FECHA_CREACION" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FECHA_ACTUALIZACION" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Verifica existencias.Connections[OleDbConnection]"
+                  connectionManagerID="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[IDT2024.ACTIVO_FIJO_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PRODUCTO_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -1101,9 +1698,19 @@ res_currency rc ON ast.currency_id = rc.id;</property>
               startId="Package\Data Flow Task\Character Map.Outputs[Character Map Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Data Conversion Output]"
-              endId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
+              endId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]"
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\Verifica existencias.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
               endId="Package\Data Flow Task\Character Map.Inputs[Character Map Input]"
@@ -1137,33 +1744,37 @@ res_currency rc ON ast.currency_id = rc.id;</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="212,257" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="223,42"
           Id="Package\Data Flow Task\Origen de ADO NET (ODOO)"
           TopLeft="176,68" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="207,237" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
+          TopLeft="104,439" />
         <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\Character Map"
           TopLeft="213,160" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Character Map Output]"
-          TopLeft="290.75,202">
+          TopLeft="288.25,202">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,55"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,47.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1195,29 +1806,105 @@ res_currency rc ON ast.currency_id = rc.id;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="174,42"
-          Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
-          TopLeft="201,350" />
+          Size="173,42"
+          Id="Package\Data Flow Task\Verifica existencias"
+          TopLeft="201,321" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="290.25,299">
+          TopLeft="287.5,279">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,51"
+              EndConnector="0,42"
               Start="0,0"
-              End="0,43.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Data Flow Task\OLE DB Command"
+          TopLeft="311,442" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="315,363">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.5,79"
+              Start="0,0"
+              End="82.5,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.0343642611684" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.0343642611684"
+                    Point2="0,32.0343642611684"
+                    Point3="4,32.0343642611684" />
+                  <mssgle:LineSegment
+                    End="78.5,32.0343642611684" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.5,32.0343642611684"
+                    Point2="82.5,32.0343642611684"
+                    Point3="82.5,36.0343642611684" />
+                  <mssgle:LineSegment
+                    End="82.5,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.94138671875,37.0343642611684,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="260,363">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-69,76"
+              Start="0,0"
+              End="-69,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.8178694158076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.8178694158076"
+                    Point2="0,30.8178694158076"
+                    Point3="-4,30.8178694158076" />
+                  <mssgle:LineSegment
+                    End="-65,30.8178694158076" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-65,30.8178694158076"
+                    Point2="-69,30.8178694158076"
+                    Point3="-69,34.8178694158076" />
+                  <mssgle:LineSegment
+                    End="-69,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-90.30638671875,35.8178694158076,111.6127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1234,6 +1921,29 @@ res_currency rc ON ast.currency_id = rc.id;</property>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
     <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Verifica existencias">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_PRODUCTO]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
