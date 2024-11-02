@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="DimVendedor"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{FD188BE5-77AB-4E26-A498-DB1A281F6FE5}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{6529FD21-D965-4FA8-A8B0-ACB9C8915E0C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -61,7 +61,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC5ydtr5Nu3pCAbW2+86mbezHji04So6i1POzGaz7tLcwAAAAAOgAAAAAIAACAAAADynVBss5yekm7NO6GyHNA/oM0YwaIkH8QfaRVZ+Q1xRxAAAAAPhs4XeQOmf4DQVfE91d5BQAAAAAlTLwLs0Zc4Cv7kTwWJYCpaO4mbb82xiM/8nsAkJFQr1/q86E03MWnK+/OWr883sni1x4AMpWVgD4TLIw2T5uU</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA4rz61zHnraZl4XngOHSLRnb+KtwuOsjJJ7jUm3c7eqwAAAAAOgAAAAAIAACAAAABj49gZN93wemROmop4pO6oWFaHz5/tpgjJ2LZC5a01sBAAAADbxagC7p1Td20F21tQmTMHQAAAAKlmpGNG1bJVHfsHrV6mL0ugVinQefbjzuPJKTZIVFMjB5d9Od798QEIwpBqC5AHZ81mF5Ao3Jb0TcCdrGXW5ZA</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -131,34 +131,6 @@
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[supplier_rank]"
-                      cachedDataType="i4"
-                      cachedName="supplier_rank"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[RANGO]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[supplier_rank]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id formatted]"
-                      cachedDataType="i8"
-                      cachedName="id formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_ID]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[complete name formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="complete name formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_VENDEDOR]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[website formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="website formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[SITIO_WEB]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[email formatted]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -176,10 +148,79 @@
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[phone formatted]" />
                     <inputColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[location formatted]"
-                      cachedDataType="nText"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
                       cachedName="location formatted"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[UBICACION]"
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[website formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="website formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[SITIO_WEB]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[supplier_rank]"
+                      cachedDataType="i4"
+                      cachedName="supplier_rank"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[RANGO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[supplier_rank]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[complete name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="complete name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_VENDEDOR]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_ID]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[street formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="street formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[DIRECCION]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[street formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[city formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="city formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CIUDAD]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[city formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[state name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="state name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVINCIA]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[zip code formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="zip code formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CODIGO_POSTAL]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[zip code formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[country code formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="country code formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CODIGO_PAIS]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[country code formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -220,6 +261,31 @@
                       dataType="wstr"
                       length="100"
                       name="UBICACION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CODIGO_POSTAL]"
+                      dataType="wstr"
+                      length="15"
+                      name="CODIGO_POSTAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CODIGO_PAIS]"
+                      dataType="wstr"
+                      length="5"
+                      name="CODIGO_PAIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVINCIA]"
+                      dataType="wstr"
+                      length="100"
+                      name="PROVINCIA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CIUDAD]"
+                      dataType="wstr"
+                      length="100"
+                      name="CIUDAD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[DIRECCION]"
+                      dataType="wstr"
+                      length="255"
+                      name="DIRECCION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -294,6 +360,36 @@
                       cachedDataType="nText"
                       cachedName="location"
                       lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[location]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[p_city]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="p_city"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_city]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[p_street]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="p_street"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_street]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[zip_code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="zip_code"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[zip_code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[state_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="state_name"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[state_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[country_code]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="country_code"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[country_code]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -415,7 +511,8 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]"
-                      dataType="nText"
+                      codePage="1252"
+                      dataType="text"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]"
@@ -427,6 +524,116 @@
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
                           name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[location]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[city formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[city formatted]"
+                      name="city formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_city]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[street formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[street formatted]"
+                      name="street formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_street]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[zip code formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[zip code formatted]"
+                      name="zip code formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[zip_code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state name formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state name formatted]"
+                      name="state name formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[state_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[country code formatted]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[country code formatted]"
+                      name="country code formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[country_code]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -478,7 +685,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC ACTUALIZAR_VENDEDOR ?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC ACTUALIZAR_VENDEDOR ?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -546,10 +753,51 @@
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[phone formatted]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[location formatted]"
-                      cachedDataType="nText"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
                       cachedName="location formatted"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@UBICACION]"
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[zip code formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="zip code formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@ZIPCODE]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[zip code formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[state name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="state name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@PROVINCIA]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[city formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="city formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@CITY]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[city formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[street formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="street formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STREET]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[street formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[country code formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="country code formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@COD_PAIS]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[country code formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -640,6 +888,71 @@
                           name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@ZIPCODE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="@ZIPCODE">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@COD_PAIS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="@COD_PAIS">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@PROVINCIA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@PROVINCIA">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@CITY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="@CITY">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@STREET]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="@STREET">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -690,8 +1003,10 @@
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct partner.*, 
-CONCAT(partner.city, ', ', state.code, ', ', country.code) as location 
-from account_asset_asset asset 
+CONCAT(partner.city, ', ', state.code, ', ', country.code) as location, 
+country.code as country_code, state."name" as state_name,
+partner.city as p_city, partner.zip as zip_code,
+partner.street as p_street from account_asset_asset asset 
 inner join res_partner partner on asset.partner_id = partner.id 
 inner join res_country_state state on partner.state_id = state.id 
 inner join res_country country on partner.country_id = country.id;</property>
@@ -1366,6 +1681,56 @@ inner join res_country country on partner.country_id = country.id;</property>
                       lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[location]"
                       name="location"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[country_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[country_code]"
+                      length="2"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[country_code]"
+                      name="country_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[state_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[state_name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[state_name]"
+                      name="state_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[p_city]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_city]"
+                      name="p_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[zip_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[zip_code]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[zip_code]"
+                      name="zip_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_street]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[p_street]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[p_street]"
+                      name="p_street"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1674,6 +2039,31 @@ inner join res_country country on partner.country_id = country.id;</property>
                       refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[location]"
                       dataType="nText"
                       name="location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[country_code]"
+                      dataType="wstr"
+                      length="2"
+                      name="country_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[state_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="state_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[p_city]"
+                      dataType="wstr"
+                      length="255"
+                      name="p_city" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[zip_code]"
+                      dataType="wstr"
+                      length="255"
+                      name="zip_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].ExternalColumns[p_street]"
+                      dataType="wstr"
+                      length="255"
+                      name="p_street" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2053,6 +2443,36 @@ inner join res_country country on partner.country_id = country.id;</property>
                       lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[location]"
                       name="location" />
                     <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[country_code]"
+                      dataType="wstr"
+                      length="2"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[country_code]"
+                      name="country_code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[state_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[state_name]"
+                      name="state_name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[p_city]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[p_city]"
+                      name="p_city" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[zip_code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[zip_code]"
+                      name="zip_code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[p_street]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[p_street]"
+                      name="p_street" />
+                    <outputColumn
                       refId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
@@ -2262,28 +2682,28 @@ where [refTable].[VENDEDOR_ID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="174,42"
-          Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
-          TopLeft="130,341" />
-        <NodeLayout
-          Size="244,42"
-          Id="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
-          TopLeft="221,78" />
-        <NodeLayout
-          Size="173,42"
-          Id="Package\Data Flow Task\OLE DB Command"
-          TopLeft="392,344" />
+          Size="161,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="265,160" />
         <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\Verifica existencias"
           TopLeft="254,242" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="265,160" />
+          Size="173,42"
+          Id="Package\Data Flow Task\OLE DB Command"
+          TopLeft="356,353" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
+          TopLeft="221,78" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
+          TopLeft="155,351" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="343,202">
+          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+          TopLeft="344.25,120">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2309,33 +2729,33 @@ where [refTable].[VENDEDOR_ID] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-96,57"
+              EndConnector="-71,67"
               Start="0,0"
-              End="-96,49.5">
+              End="-71,59.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.1134020618557" />
+                    End="0,23.1683848797251" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.1134020618557"
-                    Point2="0,23.1134020618557"
-                    Point3="-4,23.1134020618557" />
+                    Point1="0,23.1683848797251"
+                    Point2="0,27.1683848797251"
+                    Point3="-4,27.1683848797251" />
                   <mssgle:LineSegment
-                    End="-92,23.1134020618557" />
+                    End="-67,27.1683848797251" />
                   <mssgle:CubicBezierSegment
-                    Point1="-92,23.1134020618557"
-                    Point2="-96,23.1134020618557"
-                    Point3="-96,27.1134020618557" />
+                    Point1="-67,27.1683848797251"
+                    Point2="-71,27.1683848797251"
+                    Point3="-71,31.1683848797251" />
                   <mssgle:LineSegment
-                    End="-96,49.5" />
+                    End="-71,59.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-103.80638671875,28.1134020618557,111.6127734375,11.609375"
+              BoundingBox="-91.30638671875,32.1683848797251,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2345,39 +2765,39 @@ where [refTable].[VENDEDOR_ID] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="110.5,60"
+              EndConnector="74.5,69"
               Start="0,0"
-              End="110.5,52.5">
+              End="74.5,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3298969072165" />
+                    End="0,23.979381443299" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.3298969072165"
-                    Point2="0,24.3298969072165"
-                    Point3="4,24.3298969072165" />
+                    Point1="0,23.979381443299"
+                    Point2="0,27.979381443299"
+                    Point3="4,27.979381443299" />
                   <mssgle:LineSegment
-                    End="106.5,24.3298969072165" />
+                    End="70.5,27.979381443299" />
                   <mssgle:CubicBezierSegment
-                    Point1="106.5,24.3298969072165"
-                    Point2="110.5,24.3298969072165"
-                    Point3="110.5,28.3298969072165" />
+                    Point1="70.5,27.979381443299"
+                    Point2="74.5,27.979381443299"
+                    Point3="74.5,31.979381443299" />
                   <mssgle:LineSegment
-                    End="110.5,52.5" />
+                    End="74.5,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.05861328125,29.3298969072165,96.3827734375,11.609375"
+              BoundingBox="-10.94138671875,32.979381443299,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
-          TopLeft="344.25,120">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="343,202">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2401,8 +2821,23 @@ where [refTable].[VENDEDOR_ID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
+    design-time-name="Package\Data Flow Task\Verifica existencias">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_VENDEDOR]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -2417,23 +2852,8 @@ where [refTable].[VENDEDOR_ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Verifica existencias">
+    design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DIM_VENDEDOR]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
