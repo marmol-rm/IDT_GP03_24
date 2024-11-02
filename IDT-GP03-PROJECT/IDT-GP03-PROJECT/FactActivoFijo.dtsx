@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="FactActivoFijo"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{A0231EFB-C72C-482C-85DB-B9F5463FFCED}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{4D90416A-B10D-40F9-8BC9-B249D3BF8548}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -71,21 +71,84 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABdT6R0kAcXK4lM5fOiabnjrxmlfnKsCqz/XOApxCAUxgAAAAAOgAAAAAIAACAAAABWSnIplDvFYPEOqFGwHOb4UfRy0DXf7lWHL6WSG9Cc+RAAAAAPVGxV2wtUYrP4+Dzn8ue8QAAAADI7+E1qiTq5dcruhmed4qAU6X6D1cfTDBC+aSQVexnNq4jdKr4chOLOMQPxyVoQSWivSfooZ/hWayIMfps29V8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD9pDmiOunqKRiCYMneC6+bVbjKUdRdj7fAQ1CvSN5uJAAAAAAOgAAAAAIAACAAAADQQFaby8fzZ33huaMIis1+3/NF+/41dLemDsYz3ZWhahAAAABRACGL18cjNNLV5mFY1iOUQAAAADH7in0hToPZSPwj5lXg+KdyhxgWvcGvcOtVBZRrBA0FBWtfGT2Bjk6FOykdpz1mRVXyyw+pXPCXPB2CGRMFxr0</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CD1F6AFB-202C-4CF9-989A-5D12B983996D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FechaUltimaEjecucion">
+      <DTS:VariableValue
+        DTS:DataType="7">11/1/2024 8:10:03 PM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Actualizacion de ultima fecha de ejecucion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{CA8F0A46-5BF4-476A-91C1-5EB96EB5D312}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Actualizacion de ultima fecha de ejecucion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}"
+          SQLTask:SqlStatementSource="UPDATE DW_PARAMETROS SET VALOR_PARAM= CONVERT(varchar, CONVERT(date, GETDATE()))" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::FechaUltimaEjecucion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Busqueda de ultima fecha de ejecucion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{0E800217-CB26-481B-B2E7-61CC1DD45FDC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Busqueda de ultima fecha de ejecucion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F3BFEF9-8E43-4882-8D3B-C6D9B39F674E}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="SELECT vFecha = CONVERT(date, VALOR_PARAM) FROM DW_PARAMETROS WHERE NOMBRE_PARAM = 'ULTIMA_EJECUCION';&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="vFecha"
+            SQLTask:DtsVariableName="User::FechaUltimaEjecucion" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::FechaUltimaEjecucion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="135"
+            SQLTask:ParameterSize="255" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Llenado de tabla de hechos"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{367DB4F7-640F-4E58-927D-31CB644F0E55}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="Llenado de tabla de hechos"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -93,7 +156,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\ACTIVO_FIJO_DW"
+              refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;2"
               description="Carga datos en una base de datos compatible con ADO.NET que use una vista o tabla de base de datos. Se cargan datos en una tabla nueva o existente. Por ejemplo, se usa un proveedor ADO.NET para ODBC para cargar datos en un destino ODBC."
@@ -128,7 +191,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Connections[IDbConnection]"
+                  refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Connections[IDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW 2]"
                   connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW 2]"
                   description="Administrador de conexiones administrado"
@@ -136,90 +199,90 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
+                  refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
                   errorRowDisposition="IgnoreFailure"
                   hasSideEffects="true"
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[FECHA_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[FECHA_KEY]"
                       cachedDataType="i4"
                       cachedName="FECHA_KEY"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_KEY]"
-                      lineageId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Match Output].Columns[FECHA_KEY]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Match Output].Columns[FECHA_KEY]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[PRODUCTO_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[PRODUCTO_KEY]"
                       cachedDataType="i8"
                       cachedName="PRODUCTO_KEY"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_KEY]"
-                      lineageId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[VENDEDOR_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[VENDEDOR_KEY]"
                       cachedDataType="i8"
                       cachedName="VENDEDOR_KEY"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
-                      lineageId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[salvage_value]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[salvage_value]"
                       cachedDataType="numeric"
                       cachedName="salvage_value"
                       cachedPrecision="28"
                       cachedScale="6"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_RECUPERADO]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[salvage_value]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_RECUPERADO]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[salvage_value]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[mes_compra]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[mes_compra]"
                       cachedDataType="r8"
                       cachedName="mes_compra"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[MES_DE_COMPRA]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[MES_DE_COMPRA]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[anio_compra]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[anio_compra]"
                       cachedDataType="r8"
                       cachedName="anio_compra"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ANIO_DE_COMPRA]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ANIO_DE_COMPRA]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[value]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[value]"
                       cachedDataType="numeric"
                       cachedName="value"
                       cachedPrecision="28"
                       cachedScale="6"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[value]" />
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[value]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_KEY]"
                       dataType="i4"
                       name="FECHA_KEY" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_KEY]"
                       dataType="i8"
                       name="PRODUCTO_KEY" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
                       dataType="i8"
                       name="VENDEDOR_KEY" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
                       dataType="numeric"
                       name="VALOR_DE_COMPRA"
                       precision="25"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_RECUPERADO]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_RECUPERADO]"
                       dataType="numeric"
                       name="VALOR_RECUPERADO"
                       precision="25"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[MES_DE_COMPRA]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[MES_DE_COMPRA]"
                       dataType="i4"
                       name="MES_DE_COMPRA" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ANIO_DE_COMPRA]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ANIO_DE_COMPRA]"
                       dataType="i4"
                       name="ANIO_DE_COMPRA" />
                   </externalMetadataColumns>
@@ -227,22 +290,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET]"
+                  refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Salida de error de destino de ADO NET"
-                  synchronousInputId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
+                      lineageId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
+                      lineageId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Outputs[Salida de error de destino de ADO NET].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -251,7 +314,96 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Data Conversion"
+              refId="Package\Llenado de tabla de hechos\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Llenado de tabla de hechos\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Llenado de tabla de hechos\Conditional Split.Inputs[Conditional Split Input].Columns[fecha_creacion]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="fecha_creacion"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Filtrado desde ultima ejecucion]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Filtrado desde ultima ejecucion"
+                  synchronousInputId="Package\Llenado de tabla de hechos\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]} &gt; @[User::FechaUltimaEjecucion]</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">fecha_creacion &gt; @[User::FechaUltimaEjecucion]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Llenado de tabla de hechos\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Llenado de tabla de hechos\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Llenado de tabla de hechos\Data Conversion"
               componentClassID="Microsoft.DataConvert"
               contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Data Conversion"
@@ -259,36 +411,46 @@
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  refId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input]"
                   name="Data Conversion Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[partner_id]"
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input].Columns[partner_id]"
                       cachedDataType="i4"
                       cachedName="partner_id"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]" />
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[asset_id]"
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input].Columns[asset_id]"
                       cachedDataType="i4"
                       cachedName="asset_id"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]" />
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]" />
+                    <inputColumn
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input].Columns[mes_compra]"
+                      cachedDataType="r8"
+                      cachedName="mes_compra"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]" />
+                    <inputColumn
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input].Columns[anio_compra]"
+                      cachedDataType="r8"
+                      cachedName="anio_compra"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output]"
                   exclusionGroup="1"
                   name="Data Conversion Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]"
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]"
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]"
                       name="partner id formatted"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -296,7 +458,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -304,11 +466,11 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]"
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]"
                       dataType="i8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]"
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]"
                       name="asset id formatted"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -316,7 +478,47 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]}</property>
+                          name="SourceInputColumnLineageID">#{Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[mes compra formatted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[mes compra formatted]"
+                      name="mes compra formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[anio compra formatted]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[anio compra formatted]"
+                      name="anio compra formatted"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -327,22 +529,22 @@
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Data Conversion Error Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      refId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -351,7 +553,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Lookup FechaKey"
+              refId="Package\Llenado de tabla de hechos\Lookup FechaKey"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -407,7 +609,7 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\239:invalid};</property>
+                  name="ParameterMap">#{Package\Llenado de tabla de hechos\157:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -419,7 +621,7 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Lookup FechaKey.Connections[OleDbConnection]"
+                  refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
                   connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
                   description="Connection manager used to access lookup data."
@@ -427,14 +629,14 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Lookup FechaKey.Inputs[Lookup Input]"
+                  refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Lookup FechaKey.Inputs[Lookup Input].Columns[fecha_creacion]"
+                      refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Inputs[Lookup Input].Columns[fecha_creacion]"
                       cachedDataType="dbTimeStamp"
                       cachedName="fecha_creacion"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]">
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -452,17 +654,17 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Match Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup FechaKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup FechaKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Match Output].Columns[FECHA_KEY]"
+                      refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Match Output].Columns[FECHA_KEY]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Match Output].Columns[FECHA_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Match Output].Columns[FECHA_KEY]"
                       name="FECHA_KEY"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -476,30 +678,30 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup No Match Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup FechaKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup FechaKey.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Error Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup FechaKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup FechaKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -508,7 +710,7 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Lookup ProductoKey"
+              refId="Package\Llenado de tabla de hechos\Lookup ProductoKey"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -564,7 +766,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]};</property>
+                  name="ParameterMap">#{Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -576,7 +778,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Lookup ProductoKey.Connections[OleDbConnection]"
+                  refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
                   connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
                   description="Connection manager used to access lookup data."
@@ -584,14 +786,14 @@ where [refTable].[PRODUCTO_ID] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Lookup ProductoKey.Inputs[Lookup Input]"
+                  refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Lookup ProductoKey.Inputs[Lookup Input].Columns[asset id formatted]"
+                      refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input].Columns[asset id formatted]"
                       cachedDataType="i8"
                       cachedName="asset id formatted"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]">
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[asset id formatted]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -609,18 +811,18 @@ where [refTable].[PRODUCTO_ID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Match Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup ProductoKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]"
+                      refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]"
                       dataType="i8"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]"
                       name="PRODUCTO_KEY"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -634,30 +836,30 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup No Match Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup ProductoKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Error Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup ProductoKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -666,7 +868,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Lookup VendedorKey"
+              refId="Package\Llenado de tabla de hechos\Lookup VendedorKey"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -722,7 +924,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]};</property>
+                  name="ParameterMap">#{Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -734,7 +936,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Lookup VendedorKey.Connections[OleDbConnection]"
+                  refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
                   connectionManagerRefId="Package.ConnectionManagers[HP-ECHO\IDT2024.ACTIVO_FIJO_DW]"
                   description="Connection manager used to access lookup data."
@@ -742,14 +944,14 @@ where [refTable].[VENDEDOR_ID] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Lookup VendedorKey.Inputs[Lookup Input]"
+                  refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Lookup VendedorKey.Inputs[Lookup Input].Columns[partner id formatted]"
+                      refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input].Columns[partner id formatted]"
                       cachedDataType="i8"
                       cachedName="partner id formatted"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]">
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[partner id formatted]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -767,17 +969,17 @@ where [refTable].[VENDEDOR_ID] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Match Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup VendedorKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]"
+                      refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]"
                       dataType="i8"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]"
                       name="VENDEDOR_KEY"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -791,30 +993,30 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup No Match Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup VendedorKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Error Output]"
+                  refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\Data Flow Task\Lookup VendedorKey.Inputs[Lookup Input]">
+                  synchronousInputId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -823,7 +1025,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Origen de ADO NET"
+              refId="Package\Llenado de tabla de hechos\Origen de ADO NET"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
               description="Consume datos de SQL Server, OLE DB, ODBC u Oracle mediante el correspondiente proveedor de datos de .NET Framework. Se usa una instrucción Transact-SQL para definir el conjunto de resultados. Por ejemplo, se extraen datos de SQL Server con el proveedor de datos de .NET Framework para SQL Server."
@@ -869,7 +1071,7 @@ on asset.id = depline.asset_id;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Origen de ADO NET.Connections[IDbConnection]"
+                  refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Connections[IDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[localhost.DB_ODOO.odoo-admin]"
                   connectionManagerRefId="Package.ConnectionManagers[localhost.DB_ODOO.odoo-admin]"
                   description="Administrador de conexiones administrado"
@@ -877,167 +1079,167 @@ on asset.id = depline.asset_id;</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET]"
+                  refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET]"
                   name="Salida de origen de ADO NET">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[asset_id]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[asset_id]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[asset_id]"
                       name="asset_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[salvage_value]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[salvage_value]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[salvage_value]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[salvage_value]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[salvage_value]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[salvage_value]"
                       name="salvage_value"
                       precision="28"
                       scale="6"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[partner_id]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[partner_id]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[partner_id]"
                       name="partner_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[fecha_creacion]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[fecha_creacion]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]"
                       name="fecha_creacion"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[value]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[value]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[value]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[value]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[value]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[value]"
                       name="value"
                       precision="28"
                       scale="6"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[mes_compra]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[mes_compra]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[mes_compra]"
                       name="mes_compra"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[anio_compra]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[anio_compra]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].Columns[anio_compra]"
                       name="anio_compra"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[asset_id]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[asset_id]"
                       dataType="i4"
                       name="asset_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[salvage_value]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[salvage_value]"
                       dataType="numeric"
                       name="salvage_value"
                       precision="28"
                       scale="6" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[partner_id]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[partner_id]"
                       dataType="i4"
                       name="partner_id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[fecha_creacion]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[fecha_creacion]"
                       dataType="dbTimeStamp"
                       name="fecha_creacion" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[value]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[value]"
                       dataType="numeric"
                       name="value"
                       precision="28"
                       scale="6" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[mes_compra]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[mes_compra]"
                       dataType="r8"
                       name="mes_compra" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[anio_compra]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET].ExternalColumns[anio_compra]"
                       dataType="r8"
                       name="anio_compra" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET]"
+                  refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET]"
                   isErrorOut="true"
                   name="Salida de error de origen de ADO NET">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[asset_id]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[asset_id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[asset_id]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[asset_id]"
                       name="asset_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[salvage_value]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[salvage_value]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[salvage_value]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[salvage_value]"
                       name="salvage_value"
                       precision="28"
                       scale="6" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[partner_id]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[partner_id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[partner_id]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[partner_id]"
                       name="partner_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[fecha_creacion]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[fecha_creacion]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[fecha_creacion]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[fecha_creacion]"
                       name="fecha_creacion" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[value]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[value]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[value]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[value]"
                       name="value"
                       precision="28"
                       scale="6" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[mes_compra]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[mes_compra]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[mes_compra]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[mes_compra]"
                       name="mes_compra" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[anio_compra]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[anio_compra]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[anio_compra]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[anio_compra]"
                       name="anio_compra" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      refId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de error de origen de ADO NET].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1048,35 +1250,58 @@ on asset.id = depline.asset_id;</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
-              endId="Package\Data Flow Task\Lookup FechaKey.Inputs[Lookup Input]"
+              refId="Package\Llenado de tabla de hechos.Paths[Data Conversion Output]"
+              endId="Package\Llenado de tabla de hechos\Lookup FechaKey.Inputs[Lookup Input]"
               name="Data Conversion Output"
-              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+              startId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
-              endId="Package\Data Flow Task\Lookup ProductoKey.Inputs[Lookup Input]"
+              refId="Package\Llenado de tabla de hechos.Paths[Filtrado desde ultima ejecucion]"
+              endId="Package\Llenado de tabla de hechos\Data Conversion.Inputs[Data Conversion Input]"
+              name="Filtrado desde ultima ejecucion"
+              startId="Package\Llenado de tabla de hechos\Conditional Split.Outputs[Filtrado desde ultima ejecucion]" />
+            <path
+              refId="Package\Llenado de tabla de hechos.Paths[Lookup Match Output]"
+              endId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\Lookup FechaKey.Outputs[Lookup Match Output]" />
+              startId="Package\Llenado de tabla de hechos\Lookup FechaKey.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
-              endId="Package\Data Flow Task\Lookup VendedorKey.Inputs[Lookup Input]"
+              refId="Package\Llenado de tabla de hechos.Paths[Lookup Match Output1]"
+              endId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\Lookup ProductoKey.Outputs[Lookup Match Output]" />
+              startId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
-              endId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
+              refId="Package\Llenado de tabla de hechos.Paths[Lookup Match Output2]"
+              endId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task\Lookup VendedorKey.Outputs[Lookup Match Output]" />
+              startId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
-              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              refId="Package\Llenado de tabla de hechos.Paths[Salida de origen de ADO NET]"
+              endId="Package\Llenado de tabla de hechos\Conditional Split.Inputs[Conditional Split Input]"
               name="Salida de origen de ADO NET"
-              startId="Package\Data Flow Task\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
+              startId="Package\Llenado de tabla de hechos\Origen de ADO NET.Outputs[Salida de origen de ADO NET]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{E8D86F88-E8C9-4467-8680-73FCA6BE370A}"
+      DTS:From="Package\Busqueda de ultima fecha de ejecucion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Llenado de tabla de hechos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1276EF8D-3E30-489C-8F37-3B3DE1DC1C87}"
+      DTS:From="Package\Llenado de tabla de hechos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Actualizacion de ultima fecha de ejecucion" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -1088,70 +1313,122 @@ on asset.id = depline.asset_id;</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155,42"
-          Id="Package\Data Flow Task"
-          TopLeft="71,60" />
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\Data Flow Task">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+          Size="214,42"
+          Id="Package\Llenado de tabla de hechos"
+          TopLeft="114,136" />
         <NodeLayout
-          Size="181,42"
-          Id="Package\Data Flow Task\Lookup ProductoKey"
-          TopLeft="132,222" />
-        <NodeLayout
-          Size="179,42"
-          Id="Package\Data Flow Task\Origen de ADO NET"
-          TopLeft="133,28" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="360,83" />
-        <NodeLayout
-          Size="168,42"
-          Id="Package\Data Flow Task\Lookup FechaKey"
-          TopLeft="141,127" />
-        <NodeLayout
-          Size="185,42"
-          Id="Package\Data Flow Task\Lookup VendedorKey"
-          TopLeft="132,315" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
-          TopLeft="142,410" />
+          Size="271,42"
+          Id="Package\Busqueda de ultima fecha de ejecucion"
+          TopLeft="86,43" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
-          TopLeft="226.75,357">
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="221.25,85">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,53"
+              EndConnector="0,51"
               Start="0,0"
-              End="0,45.5">
+              End="0,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.5" />
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="286,42"
+          Id="Package\Actualizacion de ultima fecha de ejecucion"
+          TopLeft="80,226" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="222,178">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Llenado de tabla de hechos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Llenado de tabla de hechos\Lookup FechaKey"
+          TopLeft="141,145" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Llenado de tabla de hechos\Lookup VendedorKey"
+          TopLeft="132,333" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Llenado de tabla de hechos\Data Conversion"
+          TopLeft="380,138" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Llenado de tabla de hechos\Lookup ProductoKey"
+          TopLeft="132,240" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Llenado de tabla de hechos\Origen de ADO NET"
+          TopLeft="136,28" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW"
+          TopLeft="136,440" />
+        <EdgeLayout
+          Id="Package\Llenado de tabla de hechos.Paths[Lookup Match Output2]"
+          TopLeft="223.75,375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,16.9453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,22.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
-          TopLeft="223.5,264">
+          Id="Package\Llenado de tabla de hechos.Paths[Lookup Match Output1]"
+          TopLeft="223.5,282">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1174,8 +1451,8 @@ on asset.id = depline.asset_id;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="223.75,169">
+          Id="Package\Llenado de tabla de hechos.Paths[Lookup Match Output]"
+          TopLeft="223.75,187">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1198,31 +1475,45 @@ on asset.id = depline.asset_id;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="360,109.666666666667">
+          Id="Package\Llenado de tabla de hechos.Paths[Data Conversion Output]"
+          TopLeft="380,162.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-51,38.3333333333333"
+              EndConnector="-71,0"
               Start="0,0"
-              End="-43.5,38.3333333333333">
+              End="-63.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-17.5229357798165,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-17.5229357798165,0"
-                    Point2="-21.5229357798165,0"
-                    Point3="-21.5229357798165,4" />
+                    End="-63.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Llenado de tabla de hechos\Conditional Split"
+          TopLeft="386,25" />
+        <EdgeLayout
+          Id="Package\Llenado de tabla de hechos.Paths[Salida de origen de ADO NET]"
+          TopLeft="315,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71,0"
+              Start="0,0"
+              End="63.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-21.5229357798165,34.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-21.5229357798165,34.3333333333333"
-                    Point2="-21.5229357798165,38.3333333333333"
-                    Point3="-25.5229357798165,38.3333333333333" />
-                  <mssgle:LineSegment
-                    End="-43.5,38.3333333333333" />
+                    End="63.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1232,75 +1523,34 @@ on asset.id = depline.asset_id;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
-          TopLeft="312,49">
+          Id="Package\Llenado de tabla de hechos.Paths[Filtrado desde ultima ejecucion]"
+          TopLeft="463,67">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="48,49.3333333333333"
+              EndConnector="0,71"
               Start="0,0"
-              End="40.5,49.3333333333333">
+              End="0,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="23.7431192660551,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23.7431192660551,0"
-                    Point2="27.7431192660551,0"
-                    Point3="27.7431192660551,4" />
-                  <mssgle:LineSegment
-                    End="27.7431192660551,45.3333333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.7431192660551,45.3333333333333"
-                    Point2="27.7431192660551,49.3333333333333"
-                    Point3="31.7431192660551,49.3333333333333" />
-                  <mssgle:LineSegment
-                    End="40.5,49.3333333333333" />
+                    End="0,63.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-68.79693359375,25.91845703125,137.5938671875,11.6630859375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup ProductoKey">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DIM_PRODUCTO]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Origen de ADO NET">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup FechaKey">
+    design-time-name="Package\Llenado de tabla de hechos\Lookup FechaKey">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -1323,12 +1573,12 @@ on asset.id = depline.asset_id;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Lookup VendedorKey">
+    design-time-name="Package\Llenado de tabla de hechos\Lookup VendedorKey">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1338,7 +1588,7 @@ on asset.id = depline.asset_id;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1346,7 +1596,38 @@ on asset.id = depline.asset_id;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
+    design-time-name="Package\Llenado de tabla de hechos\Lookup ProductoKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_PRODUCTO]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Llenado de tabla de hechos\Origen de ADO NET">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
