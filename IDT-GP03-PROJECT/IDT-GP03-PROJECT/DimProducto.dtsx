@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="DimProducto"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{494A363E-B7BA-4B57-AE1B-F3F10520C918}">
+  DTS:VersionBuild="78"
+  DTS:VersionGUID="{B4158D85-0F90-41F4-8676-26C30C0A60E8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -49,7 +49,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABRzRsTsIzG2IpnRiDux1WCxuwzfRwhVhiR1zUL2i485AAAAAAOgAAAAAIAACAAAAAZGXUjKkiha3R4nIxBwtLNTllayPFZ7gMzCJUorBHT5hAAAADAQVcp9OoXF6WoNTuFY3hOQAAAAF9E1gUkdfVTz4qW6OG4+4bc8swOFimRekyk3tsykx8jax3oSDZ0xuM2XDa5PUtnOKuYy/C52f5tAcuSblH/Qik</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAB5lzHFpSK+B2EdsQcy6CNM+jgfM74Bvnu80w822JevQAAAAAOgAAAAAIAACAAAADD8OfuqjcAHxGB++zoLXhB/fgfbJZ6cn6raYI3EK/g6hAAAABHW1C+jZnmfpw2J1VwrQU4QAAAANopHdSPcEVsvrRDr7A3ypF7aJh39nKl9A9ASJr8u0lv1SNahWUARUtMSzUZDhHSyAjILPq06f+F3KA6CqunYg8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -872,7 +872,7 @@
                   description="Especifica la instrucción SQL utilizada por el componente para extraer datos."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select asset.*, 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct asset.*, 
 cat."name" as category_name, 
 cur."name" as currency_name, 
 asset.value as valor_producto,
@@ -881,7 +881,8 @@ depline.depreciated_value as valor_depreciado,
 depline.remaining_value + depline.depreciated_value as valor_anterior from account_asset_asset asset inner join 
 account_asset_category cat ON asset.category_id = cat.id inner join 
 account_asset_depreciation_line depline on depline.asset_id = asset.id inner join res_currency cur ON asset.currency_id = cur.id 
-where date_part('year', depline.depreciation_date) = date_part('year', CURRENT_DATE) and date_part('month', depline.depreciation_date) = date_part('month', CURRENT_DATE) ;</property>
+where date_part('year', depline.depreciation_date) = date_part('year', CURRENT_DATE) and date_part('month', depline.depreciation_date) =  date_part('month', CURRENT_DATE)
+ ;</property>
                 <property
                   dataType="System.Int32"
                   description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
@@ -1569,7 +1570,7 @@ where date_part('year', depline.depreciation_date) = date_part('year', CURRENT_D
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_PRODUCTO]) [refTable]
-where [refTable].[PRODUCTO_ID] = ?</property>
+where [refTable].[PRODUCTO_ID] = ? and [refTable].[NOMBRE_PRODUCTO] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -1605,7 +1606,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]};</property>
+                  name="ParameterMap">#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]};#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[product name]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1628,6 +1629,24 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                   refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input].Columns[product name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="product name"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[product name]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">NOMBRE_PRODUCTO</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
                     <inputColumn
                       refId="Package\Data Flow Task\Verifica existencias.Inputs[Lookup Input].Columns[id formatted]"
                       cachedDataType="i8"
@@ -1748,30 +1767,30 @@ where [refTable].[PRODUCTO_ID] = ?</property>
         <NodeLayout
           Size="223,42"
           Id="Package\Data Flow Task\Origen de ADO NET (ODOO)"
-          TopLeft="176,68" />
+          TopLeft="169.333333333333,18" />
         <NodeLayout
           Size="174,42"
           Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
-          TopLeft="104,439" />
+          TopLeft="97.3333333333333,389" />
         <NodeLayout
           Size="161,42"
           Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="207,237" />
+          TopLeft="200.333333333333,187" />
         <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\OLE DB Command"
-          TopLeft="311,442" />
+          TopLeft="304.333333333333,392" />
         <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\Character Map"
-          TopLeft="213,160" />
+          TopLeft="206.333333333333,110" />
         <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\Verifica existencias"
-          TopLeft="201,321" />
+          TopLeft="194.333333333333,271" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
-          TopLeft="288.25,110">
+          TopLeft="281.583333333333,60">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1793,7 +1812,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="260,363">
+          TopLeft="253.333333333333,313">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1823,13 +1842,13 @@ where [refTable].[PRODUCTO_ID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-90.30638671875,35.8178694158076,111.6127734375,11.609375"
+              BoundingBox="-99.1750390625,35.8178694158076,129.350078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="315,363">
+          TopLeft="308.333333333333,313">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1865,7 +1884,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="287.5,279">
+          TopLeft="280.833333333333,229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1887,7 +1906,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Character Map Output]"
-          TopLeft="288.25,202">
+          TopLeft="281.583333333333,152">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

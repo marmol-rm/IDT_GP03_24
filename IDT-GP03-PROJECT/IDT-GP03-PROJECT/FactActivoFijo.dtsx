@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="FactActivoFijo"
   DTS:PackageType="5"
-  DTS:VersionBuild="92"
-  DTS:VersionGUID="{63C55AF0-C75B-4AA6-ACA3-83722F7DEB97}">
+  DTS:VersionBuild="96"
+  DTS:VersionGUID="{4D7A97F5-083B-4C36-9859-1DFAA206D0F0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -71,7 +71,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACbiaam7Fa9SjSdWQyqwNYFP0y4PvKuoq45awh2n1yBCQAAAAAOgAAAAAIAACAAAAA9Oj6fYFmIoQz7YnFsnZRupnbMAecLB6HJGujFm76KGRAAAAATG11YxY4/z4SWGqEmqlugQAAAAOPwSkToVBl5fKulHM3Ss/R5q3TP6UYm+DH2fBvBgmIohY7yn/SVhXLK7+qd6sC0YA1LDKHlFO4z8mVNb9nzblo</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD5OqrzvkL71pk6l/0L725S8cwtHT+JnNn5yDizWbg6+wAAAAAOgAAAAAIAACAAAAB4cJRYcVM1l9TULRvONgpswb/x8R2nR622M6sS2W3gxhAAAADqbpEW/H5gAAg0b0Ga5NyBQAAAAB3zWcEENo2264Gzr2inCQ2QUu8C8TbeSpHSvIhOXszRUib9uoS7ET2U+cmG16qud/6H3eOSqVVlUo40EZO7TrM</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -217,11 +217,19 @@
                       externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PRODUCTO_KEY]"
                       lineageId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output].Columns[PRODUCTO_KEY]" />
                     <inputColumn
-                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[VENDEDOR_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[PROVEEDOR_KEY]"
                       cachedDataType="i8"
-                      cachedName="VENDEDOR_KEY"
-                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
-                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]" />
+                      cachedName="PROVEEDOR_KEY"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVEEDOR_KEY]"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[PROVEEDOR_KEY]" />
+                    <inputColumn
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[value]"
+                      cachedDataType="numeric"
+                      cachedName="value"
+                      cachedPrecision="28"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
+                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[value]" />
                     <inputColumn
                       refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[salvage_value]"
                       cachedDataType="numeric"
@@ -231,28 +239,24 @@
                       externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_RECUPERADO]"
                       lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[salvage_value]" />
                     <inputColumn
-                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[mes_compra]"
-                      cachedDataType="r8"
-                      cachedName="mes_compra"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[mes compra formatted]"
+                      cachedDataType="i4"
+                      cachedName="mes compra formatted"
                       externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[MES_DE_COMPRA]"
-                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[mes_compra]" />
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[mes compra formatted]" />
                     <inputColumn
-                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[anio_compra]"
-                      cachedDataType="r8"
-                      cachedName="anio_compra"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[anio compra formatted]"
+                      cachedDataType="i4"
+                      cachedName="anio compra formatted"
                       externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[ANIO_DE_COMPRA]"
-                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[anio_compra]" />
-                    <inputColumn
-                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[value]"
-                      cachedDataType="numeric"
-                      cachedName="value"
-                      cachedPrecision="28"
-                      cachedScale="6"
-                      externalMetadataColumnId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
-                      lineageId="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[value]" />
+                      lineageId="Package\Llenado de tabla de hechos\Data Conversion.Outputs[Data Conversion Output].Columns[anio compra formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FACT_TABLE_KEY]"
+                      dataType="i8"
+                      name="FACT_TABLE_KEY" />
                     <externalMetadataColumn
                       refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[FECHA_KEY]"
                       dataType="i4"
@@ -262,9 +266,9 @@
                       dataType="i8"
                       name="PRODUCTO_KEY" />
                     <externalMetadataColumn
-                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
+                      refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVEEDOR_KEY]"
                       dataType="i8"
-                      name="VENDEDOR_KEY" />
+                      name="PROVEEDOR_KEY" />
                     <externalMetadataColumn
                       refId="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VALOR_DE_COMPRA]"
                       dataType="numeric"
@@ -609,7 +613,7 @@ where [refTable].[FECHA_COMPLETA] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Llenado de tabla de hechos\386:invalid};</property>
+                  name="ParameterMap">#{Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[fecha_creacion]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -881,14 +885,14 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_VENDEDOR]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_PROVEEDOR]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_VENDEDOR]) [refTable]
-where [refTable].[VENDEDOR_ID] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_PROVEEDOR]) [refTable]
+where [refTable].[PROVEEDOR_ID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -919,7 +923,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VENDEDOR_KEY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VENDEDOR_ID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOMBRE_VENDEDOR" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="RANGO" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SITIO_WEB" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EMAIL" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TELEFONO" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UBICACION" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PROVEEDOR_KEY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PROVEEDOR_ID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOMBRE_PROVEEDOR" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="RANGO" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SITIO_WEB" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EMAIL" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TELEFONO" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UBICACION" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CODIGO_POSTAL" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CODIGO_PAIS" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PROVINCIA" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CIUDAD" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DIRECCION" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -956,7 +960,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">VENDEDOR_ID</property>
+                          name="JoinToReferenceColumn">PROVEEDOR_ID</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -976,17 +980,17 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                   synchronousInputId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]"
+                      refId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[PROVEEDOR_KEY]"
                       dataType="i8"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[VENDEDOR_KEY]"
-                      name="VENDEDOR_KEY"
+                      lineageId="Package\Llenado de tabla de hechos\Lookup VendedorKey.Outputs[Lookup Match Output].Columns[PROVEEDOR_KEY]"
+                      name="PROVEEDOR_KEY"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">VENDEDOR_KEY</property>
+                          name="CopyFromReferenceColumn">PROVEEDOR_KEY</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1379,67 +1383,33 @@ on asset.id = depline.asset_id;</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="168,42"
-          Id="Package\Llenado de tabla de hechos\Lookup FechaKey"
-          TopLeft="129,102" />
+          Size="161,42"
+          Id="Package\Llenado de tabla de hechos\Data Conversion"
+          TopLeft="380,138" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO)"
+          TopLeft="93,18" />
         <NodeLayout
           Size="159,42"
           Id="Package\Llenado de tabla de hechos\Conditional Split"
           TopLeft="386,25" />
         <NodeLayout
-          Size="161,42"
-          Id="Package\Llenado de tabla de hechos\Data Conversion"
-          TopLeft="380,138" />
-        <NodeLayout
           Size="185,42"
           Id="Package\Llenado de tabla de hechos\Lookup VendedorKey"
           TopLeft="121,318" />
-        <NodeLayout
-          Size="174,42"
-          Id="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW"
-          TopLeft="125,429" />
         <NodeLayout
           Size="181,42"
           Id="Package\Llenado de tabla de hechos\Lookup ProductoKey"
           TopLeft="122,220" />
         <NodeLayout
-          Size="244,42"
-          Id="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO)"
-          TopLeft="93,18" />
-        <EdgeLayout
-          Id="Package\Llenado de tabla de hechos.Paths[Data Conversion Output]"
-          TopLeft="380,159">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-83,-36"
-              Start="0,0"
-              End="-75.5,-36">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-37.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-37.5,0"
-                    Point2="-41.5,0"
-                    Point3="-41.5,-4" />
-                  <mssgle:LineSegment
-                    End="-41.5,-32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-41.5,-32"
-                    Point2="-41.5,-36"
-                    Point3="-45.5,-36" />
-                  <mssgle:LineSegment
-                    End="-75.5,-36" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="182,42"
+          Id="Package\Llenado de tabla de hechos\ACTIVO_FIJO_DW"
+          TopLeft="124,429" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Llenado de tabla de hechos\Lookup FechaKey"
+          TopLeft="129,102" />
         <EdgeLayout
           Id="Package\Llenado de tabla de hechos.Paths[Salida de origen de ADO NET]"
           TopLeft="337,42.5">
@@ -1464,7 +1434,7 @@ on asset.id = depline.asset_id;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Llenado de tabla de hechos.Paths[Lookup Match Output2]"
-          TopLeft="212.75,360">
+          TopLeft="214.25,360">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1558,27 +1528,46 @@ on asset.id = depline.asset_id;</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Llenado de tabla de hechos.Paths[Data Conversion Output]"
+          TopLeft="380,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83,-36"
+              Start="0,0"
+              End="-75.5,-36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-37.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-37.5,0"
+                    Point2="-41.5,0"
+                    Point3="-41.5,-4" />
+                  <mssgle:LineSegment
+                    End="-41.5,-32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.5,-32"
+                    Point2="-41.5,-36"
+                    Point3="-45.5,-36" />
+                  <mssgle:LineSegment
+                    End="-75.5,-36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Llenado de tabla de hechos\Lookup FechaKey">
+    design-time-name="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO)">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DIM_FECHA]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1590,17 +1579,40 @@ on asset.id = depline.asset_id;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[DIM_VENDEDOR]</Value>
+          type="q3:string">[dbo].[DIM_PROVEEDOR]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Llenado de tabla de hechos\Lookup ProductoKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_PRODUCTO]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1616,31 +1628,23 @@ on asset.id = depline.asset_id;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Llenado de tabla de hechos\Lookup ProductoKey">
+    design-time-name="Package\Llenado de tabla de hechos\Lookup FechaKey">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[DIM_PRODUCTO]</Value>
+          type="q3:string">[dbo].[DIM_FECHA]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Llenado de tabla de hechos\Origen de ADO NET (DB_ODOO)">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

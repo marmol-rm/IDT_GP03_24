@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="PaquetePrincipal"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{70021380-9710-4AF4-BA74-6B291A461715}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{1C4269D7-2C53-4F28-B419-A5AE7C43D8F3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -35,36 +35,36 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Llenado de DimFecha"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Se encarga del llenado de la dimension de Fecha"
-      DTS:DTSID="{C1143C30-F8B6-4A13-AED5-12D55980C007}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Llenado de DimFecha"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimFecha.dtsx</PackageName>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Llenado de DimVendedor"
+      DTS:refId="Package\Llenado de DimProveedor"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Se encarga del llenado de la dimension de Vendedor"
       DTS:DTSID="{9777D0BB-21D9-444F-B8DA-2DD531C10AAE}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Llenado de DimVendedor"
+      DTS:ObjectName="Llenado de DimProveedor"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimVendedor.dtsx</PackageName>
+          <PackageName>DimProveedor.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Llenar tabla de hechos"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Llenar tabla de hechos"
+      DTS:DTSID="{004B866E-F7D8-4CBA-9A68-91A83893BADC}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Llenar tabla de hechos"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>FactActivoFijo.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -73,11 +73,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
       DTS:CreationName=""
-      DTS:DTSID="{1A66918A-1252-4F33-B3C0-E1889FC6B578}"
-      DTS:From="Package\Llenado de DimFecha"
+      DTS:DTSID="{771F00BF-6BA8-4972-B73A-0C0C1E9BC753}"
+      DTS:From="Package\Llenado de DimProveedor"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción"
-      DTS:To="Package\Llenado de Dim Producto" />
+      DTS:To="Package\Llenar tabla de hechos" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
@@ -85,7 +85,7 @@
       DTS:From="Package\Llenado de Dim Producto"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
-      DTS:To="Package\Llenado de DimVendedor" />
+      DTS:To="Package\Llenado de DimProveedor" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -102,29 +102,25 @@
         <NodeLayout
           Size="203,42"
           Id="Package\Llenado de Dim Producto"
-          TopLeft="226,208" />
+          TopLeft="180,62" />
         <NodeLayout
-          Size="186,42"
-          Id="Package\Llenado de DimFecha"
-          TopLeft="232,95" />
-        <NodeLayout
-          Size="204,42"
-          Id="Package\Llenado de DimVendedor"
-          TopLeft="222,325" />
+          Size="207,42"
+          Id="Package\Llenado de DimProveedor"
+          TopLeft="177,162" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="325.75,250">
+          TopLeft="281,104">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,75"
+              EndConnector="0,58"
               Start="0,0"
-              End="0,67.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -133,20 +129,24 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Llenar tabla de hechos"
+          TopLeft="184.5,254.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="326.25,137">
+          TopLeft="280.25,204">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71"
+              EndConnector="0,50.5"
               Start="0,0"
-              End="0,63.5">
+              End="0,43">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.5" />
+                    End="0,43" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

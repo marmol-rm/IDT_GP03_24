@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="HP-ECHO"
   DTS:CreatorName="HP-ECHO\molin"
-  DTS:DTSID="{60F19850-6043-4809-A353-6FCCB17A8E92}"
+  DTS:DTSID="{535D4DF8-D6EC-417F-BDC5-94D6A1D18C8D}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="21514"
-  DTS:ObjectName="DimVendedor"
+  DTS:ObjectName="DimProveedor"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{6529FD21-D965-4FA8-A8B0-ACB9C8915E0C}">
+  DTS:VersionBuild="54"
+  DTS:VersionGUID="{FA5409B3-B026-4E02-8019-F0EDFE781000}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -61,7 +61,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA4rz61zHnraZl4XngOHSLRnb+KtwuOsjJJ7jUm3c7eqwAAAAAOgAAAAAIAACAAAABj49gZN93wemROmop4pO6oWFaHz5/tpgjJ2LZC5a01sBAAAADbxagC7p1Td20F21tQmTMHQAAAAKlmpGNG1bJVHfsHrV6mL0ugVinQefbjzuPJKTZIVFMjB5d9Od798QEIwpBqC5AHZ81mF5Ao3Jb0TcCdrGXW5ZA</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACOMazOG7wfv04QNSnl0QprcX7aHNQd2JO2PJLfDV4QBAAAAAAOgAAAAAIAACAAAABuWhjO0Yqe3FyIvXWuByWmo2Yp4lILaEQVrIAKCXMoYxAAAADbBTyzPmNcGBShw/4bpKX2QAAAALGAOshUkILuW3w/xosXjLeR7e+JCZ47JWTozsbmMOpdXetVxJi3AMbmDDq28Vha0/t8D9fAotv4hlPJTaufGmk</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -95,7 +95,7 @@
                   description="Nombre de la tabla de la base de datos de destino."
                   expressionType="Notify"
                   name="TableOrViewName"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">[dbo].[DIM_VENDEDOR]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">[dbo].[DIM_PROVEEDOR]</property>
                 <property
                   dataType="System.Int32"
                   description="Especifique el número de filas por lote. El valor predeterminado es 0, que utiliza el mismo tamaño que el búfer interno de SSIS. "
@@ -131,6 +131,34 @@
                   name="Entrada de destino de ADO NET">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVEEDOR_ID]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[complete name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="complete name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_PROVEEDOR]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[supplier_rank]"
+                      cachedDataType="i4"
+                      cachedName="supplier_rank"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[RANGO]"
+                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[supplier_rank]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[website formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="website formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[SITIO_WEB]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]" />
+                    <inputColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[email formatted]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -154,58 +182,6 @@
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[UBICACION]"
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[location formatted]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[website formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="website formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[SITIO_WEB]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[website formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[supplier_rank]"
-                      cachedDataType="i4"
-                      cachedName="supplier_rank"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[RANGO]"
-                      lineageId="Package\Data Flow Task\Origen de ADO NET (DB_ODOO).Outputs[Salida de origen de ADO NET].Columns[supplier_rank]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[complete name formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="complete name formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_VENDEDOR]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[complete name formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[id formatted]"
-                      cachedDataType="i8"
-                      cachedName="id formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_ID]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[street formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="255"
-                      cachedName="street formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[DIRECCION]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[street formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[city formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="city formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CIUDAD]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[city formatted]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[state name formatted]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="100"
-                      cachedName="state name formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVINCIA]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state name formatted]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[zip code formatted]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -221,22 +197,46 @@
                       cachedName="country code formatted"
                       externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CODIGO_PAIS]"
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[country code formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[state name formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="state name formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVINCIA]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[state name formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[city formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="city formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[CIUDAD]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[city formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].Columns[street formatted]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="street formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[DIRECCION]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[street formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_KEY]"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVEEDOR_KEY]"
                       dataType="i8"
-                      name="VENDEDOR_KEY" />
+                      name="PROVEEDOR_KEY" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[VENDEDOR_ID]"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[PROVEEDOR_ID]"
                       dataType="i8"
-                      name="VENDEDOR_ID" />
+                      name="PROVEEDOR_ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_VENDEDOR]"
+                      refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[NOMBRE_PROVEEDOR]"
                       dataType="wstr"
                       length="100"
-                      name="NOMBRE_VENDEDOR" />
+                      name="NOMBRE_PROVEEDOR" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\ACTIVO_FIJO_DW.Inputs[Entrada de destino de ADO NET].ExternalColumns[RANGO]"
                       dataType="i4"
@@ -685,7 +685,7 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC ACTUALIZAR_VENDEDOR ?,?,?,?,?,?,?,?,?,?,?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXEC ACTUALIZAR_PROVEEDOR ?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -707,12 +707,6 @@
                   hasSideEffects="true"
                   name="OLE DB Command Input">
                   <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[id formatted]"
-                      cachedDataType="i8"
-                      cachedName="id formatted"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VENDEDOR_ID]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[supplier_rank]"
                       cachedDataType="i4"
@@ -798,20 +792,15 @@
                       cachedName="country code formatted"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@COD_PAIS]"
                       lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[country code formatted]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[id formatted]"
+                      cachedDataType="i8"
+                      cachedName="id formatted"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@PROVEEDOR_ID]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[id formatted]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@VENDEDOR_ID]"
-                      dataType="i8"
-                      name="@VENDEDOR_ID">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@NOMBRE]"
                       codePage="1252"
@@ -951,6 +940,17 @@
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@PROVEEDOR_ID]"
+                      dataType="i8"
+                      name="@PROVEEDOR_ID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -2503,14 +2503,14 @@ inner join res_country country on partner.country_id = country.id;</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_VENDEDOR]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_PROVEEDOR]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_VENDEDOR]) [refTable]
-where [refTable].[VENDEDOR_ID] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_PROVEEDOR]) [refTable]
+where [refTable].[PROVEEDOR_ID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -2541,7 +2541,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VENDEDOR_KEY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VENDEDOR_ID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOMBRE_VENDEDOR" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="RANGO" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SITIO_WEB" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EMAIL" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TELEFONO" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UBICACION" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PROVEEDOR_KEY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PROVEEDOR_ID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOMBRE_PROVEEDOR" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="RANGO" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SITIO_WEB" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="EMAIL" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TELEFONO" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UBICACION" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CODIGO_POSTAL" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CODIGO_PAIS" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PROVINCIA" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CIUDAD" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DIRECCION" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -2578,7 +2578,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">VENDEDOR_ID</property>
+                          name="JoinToReferenceColumn">PROVEEDOR_ID</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -2682,50 +2682,28 @@ where [refTable].[VENDEDOR_ID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="161,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="265,160" />
+          Size="244,42"
+          Id="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
+          TopLeft="175,28" />
         <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\Verifica existencias"
-          TopLeft="254,242" />
+          TopLeft="208,192" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="219,110" />
         <NodeLayout
           Size="173,42"
           Id="Package\Data Flow Task\OLE DB Command"
-          TopLeft="356,353" />
-        <NodeLayout
-          Size="244,42"
-          Id="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)"
-          TopLeft="221,78" />
+          TopLeft="310,303" />
         <NodeLayout
           Size="174,42"
           Id="Package\Data Flow Task\ACTIVO_FIJO_DW"
-          TopLeft="155,351" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
-          TopLeft="344.25,120">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="109,301" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="313,284">
+          TopLeft="267,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2761,7 +2739,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
-          TopLeft="368,284">
+          TopLeft="322,234">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2797,7 +2775,29 @@ where [refTable].[VENDEDOR_ID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="343,202">
+          TopLeft="297,152">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Salida de origen de ADO NET]"
+          TopLeft="298.25,70">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2831,7 +2831,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[DIM_VENDEDOR]</Value>
+          type="q3:string">[dbo].[DIM_PROVEEDOR]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -2844,7 +2844,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)">
+    design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2852,7 +2852,7 @@ where [refTable].[VENDEDOR_ID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ACTIVO_FIJO_DW">
+    design-time-name="Package\Data Flow Task\Origen de ADO NET (DB_ODOO)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
