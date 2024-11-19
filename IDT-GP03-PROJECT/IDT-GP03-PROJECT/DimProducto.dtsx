@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="DimProducto"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{B4158D85-0F90-41F4-8676-26C30C0A60E8}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{ABE14B94-2C67-478D-99E9-B9B51636A538}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -49,7 +49,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAB5lzHFpSK+B2EdsQcy6CNM+jgfM74Bvnu80w822JevQAAAAAOgAAAAAIAACAAAADD8OfuqjcAHxGB++zoLXhB/fgfbJZ6cn6raYI3EK/g6hAAAABHW1C+jZnmfpw2J1VwrQU4QAAAANopHdSPcEVsvrRDr7A3ypF7aJh39nKl9A9ASJr8u0lv1SNahWUARUtMSzUZDhHSyAjILPq06f+F3KA6CqunYg8</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA1o8/HwqomYK9ObzC/MYyBDiUkh7A+fjY/FcGmjK2KNgAAAAAOgAAAAAIAACAAAABL7zwu7bRoWTbnwkuaTPYD/ZE94Moy6UaIv+xlikJo1RAAAAC5TGt8xoaZrEYjb9JBWFLAQAAAAL6/ojrNcQkblG1AJivECuPAwRT4DlCktd5wpTbYxY0t8QHhJrMprhfTbMcIwYJoY5wPhZMIH0Z+aQy0+e5WJLc</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1842,7 +1842,7 @@ where [refTable].[PRODUCTO_ID] = ? and [refTable].[NOMBRE_PRODUCTO] = ?</propert
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.1750390625,35.8178694158076,129.350078125,16"
+              BoundingBox="-90.30638671875,35.8178694158076,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

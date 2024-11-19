@@ -11,8 +11,8 @@
   DTS:LocaleID="21514"
   DTS:ObjectName="FactActivoFijo"
   DTS:PackageType="5"
-  DTS:VersionBuild="96"
-  DTS:VersionGUID="{4D7A97F5-083B-4C36-9859-1DFAA206D0F0}">
+  DTS:VersionBuild="102"
+  DTS:VersionGUID="{E1A2338B-9540-4560-A01F-5A67799CEC29}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -71,7 +71,7 @@
           <DTS:Password
             DTS:Name="pwd"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD5OqrzvkL71pk6l/0L725S8cwtHT+JnNn5yDizWbg6+wAAAAAOgAAAAAIAACAAAAB4cJRYcVM1l9TULRvONgpswb/x8R2nR622M6sS2W3gxhAAAADqbpEW/H5gAAg0b0Ga5NyBQAAAAB3zWcEENo2264Gzr2inCQ2QUu8C8TbeSpHSvIhOXszRUib9uoS7ET2U+cmG16qud/6H3eOSqVVlUo40EZO7TrM</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAASuskKQ8wtUOTnB8Z6xgpTwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABcJXmyooMgE/lurYUN4kov5jF1cOKyphwmX8YZmgLgCQAAAAAOgAAAAAIAACAAAACw9pIcVJod27W4JNRm2kNnpPHWORyn16ou/J/8SQVP4hAAAADN5X6mncb663ju5UDXKGFrQAAAAAn1I/U7VSrSVj6sJyB7aozSH06E1p+o0eiFuTDVu1cZyiK5KIs2HHyg2J7iEUFmjG6cOFlDcHY03D0r06Gah3A</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -749,7 +749,7 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                   dataType="System.Int32"
                   description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
                   name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
+                  typeConverter="LookupNoMatchBehavior">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
@@ -817,7 +817,6 @@ where [refTable].[PRODUCTO_ID] = ?</property>
                 <output
                   refId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
-                  errorRowDisposition="FailComponent"
                   exclusionGroup="1"
                   name="Lookup Match Output"
                   synchronousInputId="Package\Llenado de tabla de hechos\Lookup ProductoKey.Inputs[Lookup Input]">
@@ -1589,7 +1588,7 @@ on asset.id = depline.asset_id;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1633,7 +1632,7 @@ on asset.id = depline.asset_id;</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1643,7 +1642,7 @@ on asset.id = depline.asset_id;</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
